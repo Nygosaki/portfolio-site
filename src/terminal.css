@@ -1,0 +1,24 @@
+body {
+    font-family: monospace;
+    background-color: rgb(30, 30, 30);
+    color: white;
+  }
+  
+  .terminal {
+    width: 800px;
+    height: 600px;
+    line-height: 0.5;
+    padding-top: 10px;
+  }
+
+  .terminal input {
+    opacity: 0;
+    margin: 0;
+    padding: 0;
+    width: 0%;
+    height: 0%;
+  }
+  
+  .terminal-cursor {
+    color: blinking;
+  }
