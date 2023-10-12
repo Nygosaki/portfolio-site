@@ -27,52 +27,22 @@ function Terminal() {
                 onKeyDown={(e) => {
                     if (e.key === 'Enter') {
                         handleCommand(input, setOutput, setUser, setHost, setHistory, setHistoryIndex, history, historyIndex);
-                  
-                      // Clear the input box
                         setInput('');
                     } else if (e.key === 'ArrowUp') {
-                        console.log("uparrow")
                         // Make sure that the history index is within the bounds of the history list
                         if (historyIndex !== 0) {
-                          // Set the history index to the previous item in the history list
-                          
-                          // Set the input value to the history item at the current history index
                           setInput(history[historyIndex-1]);
                           setHistoryIndex(historyIndex - 1);
-
-                          console.log("Uparrow is  allowed")
-                          console.log("history: ", history)
-                          console.log("index: ", historyIndex)
-                          console.log("input: ", input)
-                          console.log("----------------")
                         } else {
                           // The user is at the beginning of the history list
-                          console.log("Uparrow is  not allowed")
-                          console.log("history: ", history)
-                          console.log("index: ", historyIndex)
-                          console.log("input: ", input)
-                          console.log("----------------")
                         }
                       } else if (e.key === 'ArrowDown') {
-                        console.log("arrowdown")
                         // Make sure that the history index is within the bounds of the history list
                         if (historyIndex !== history.length) {
-                          // Set the history index to the next item in the history list
-                          // Set the input value to the history item at the current history index
                           setInput(history[historyIndex +1 ]);
                           setHistoryIndex(historyIndex + 1);
-                          console.log("arrowdown is  allowed")
-                          console.log("history: ", history)
-                          console.log("index: ", historyIndex)
-                          console.log("input: ", input)
-                          console.log("----------------")
                         } else {
                           // The user is at the end of the history list
-                          console.log("arrowdown is not allowed")
-                          console.log("history: ", history)
-                          console.log("index: ", historyIndex)
-                          console.log("input: ", input)
-                          console.log("----------------")
                         }
                       }                }}
                   
