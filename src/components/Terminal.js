@@ -1,30 +1,4 @@
 import React, { useState } from 'react';
-import './terminal.css';
-
-
-function App() {
-  const [terminals, setTerminals] = useState([]);
-
-  const focus = () => {
-    const inputs = document.querySelectorAll('.terminal input');
-    const inputNewestIndex = inputs.length - 1
-    const inputNewest = inputs.item(inputNewestIndex)
-    inputNewest.focus();
-  };
-
-  document.addEventListener('click', focus);
-
-  const addTerminal = () => {
-    setTerminals([...terminals, <Terminal key={terminals.length} />]);
-  };
-
-  return (
-    <div>
-      <button onClick={addTerminal}>Add Terminal</button>
-      <div className="terminals-container">{terminals}</div>
-    </div>
-  );
-}
 
 function Terminal() {
     const [input, setInput] = useState('');
@@ -34,6 +8,30 @@ function Terminal() {
     const [history, setHistory] = useState([]);
     const [historyIndex, setHistoryIndex] = useState(0);
   
+    const handleCommand = (inputCommand) => {
+      setHistory([...history, inputCommand]);
+      setHistoryIndex(history.length + 1);
+      console.debug("You just confirmed a command!");
+      console.debug(history.length);
+      console.debug(historyIndex);
+      switch (inputCommand.split(' ')[0]) {
+          case 'hello':
+              setOutput("Hi!");
+              break;
+          case 'bye':
+              setOutput("Bye!");
+              break;
+          case 'setuser':
+              setUser(inputCommand.split(' ')[1]);
+              break;
+          case 'sethost':
+              setHost(inputCommand.split(' ')[1]);
+              break;
+          default:
+              setOutput('Invalid command: ' + inputCommand);
+      }
+  };
+
     return (
         <div class="terminal">
             <label htmlFor="name">{user}@{host} ~</label>
@@ -74,30 +72,5 @@ function Terminal() {
         </div>
     );
   }
-  
-  function handleCommand(inputCommand, setOutput, output, setUser, setHost, setHistory, setHistoryIndex, history, historyIndex) {
-    setHistory([...history, inputCommand]);
-    setHistoryIndex(history.length + 1)
-    console.debug("You just confirmed a command!")
-    console.debug(history.length)
-    console.debug(historyIndex)
-    switch (inputCommand.split(' ')[0]) {
-      case 'hello':
-        setOutput("Hi!");
-        break;
-      case 'bye':
-        setOutput("Bye!");
-        break;
-      case 'setuser':
-        setUser(inputCommand.split(' ')[1]);
-        break;
-      case 'sethost':
-        setHost(inputCommand.split(' ')[1]);
-        break;
-      default:
-        setOutput('Invalid command: ' + inputCommand);
-    }
-  }
-  
 
-export default App;
+export default Terminal;
