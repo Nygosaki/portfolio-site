@@ -5,14 +5,12 @@ body {
   }
 
   .terminals-container {
-    /* Add styles to control the layout of multiple terminals */
     display: flex;
     flex-direction: column; /* Display terminals in a column layout */
     align-items: flex-start; /* Align terminals to the left within the container */
   }
   
   .terminal {
-    line-height: 0.5;
     white-space: nowrap; /* Prevent text from wrapping */
   }
 
@@ -26,7 +24,6 @@ body {
 
   .terminal p {
     margin: 0; /* Remove the margin */
-    margin-top: 9px; /* Add margin to the top only */
   }
   
   .terminal-cursor {
