@@ -3,12 +3,17 @@ body {
     background-color: rgb(30, 30, 30);
     color: white;
   }
+
+  .terminals-container {
+    /* Add styles to control the layout of multiple terminals */
+    display: flex;
+    flex-direction: column; /* Display terminals in a column layout */
+    align-items: flex-start; /* Align terminals to the left within the container */
+  }
   
   .terminal {
-    width: 800px;
-    height: 600px;
     line-height: 0.5;
-    padding-top: 10px;
+    white-space: nowrap; /* Prevent text from wrapping */
   }
 
   .terminal input {
@@ -17,6 +22,11 @@ body {
     padding: 0;
     width: 0%;
     height: 0%;
+  }
+
+  .terminal p {
+    margin: 0; /* Remove the margin */
+    margin-top: 9px; /* Add margin to the top only */
   }
   
   .terminal-cursor {
