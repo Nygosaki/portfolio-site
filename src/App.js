@@ -12,12 +12,12 @@ function App() {
     const inputNewest = inputs.item(inputNewestIndex)
     inputNewest.focus();
   };
-
   document.addEventListener('click', focus);
 
   const addTerminal = () => {
     setTerminals([...terminals, <Terminal key={terminals.length} />]);
   };
+  document.addEventListener('spawnTerminalLine', addTerminal);
 
   return (
     <div>

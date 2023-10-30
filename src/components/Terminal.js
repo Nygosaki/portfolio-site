@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 
 function Terminal() {
     const [input, setInput] = useState('');
-    const [output, setOutput] = useState("test output");
-    const [user, setUser] = useState('guest');
-    const [host, setHost] = useState('Server2');
+    const [output, setOutput] = useState("");
     const [history, setHistory] = useState([]);
     const [historyIndex, setHistoryIndex] = useState(0);
   
@@ -21,20 +19,16 @@ function Terminal() {
           case 'bye':
               setOutput("Bye!");
               break;
-          case 'setuser':
-              setUser(inputCommand.split(' ')[1]);
-              break;
-          case 'sethost':
-              setHost(inputCommand.split(' ')[1]);
-              break;
           default:
               setOutput('Invalid command: ' + inputCommand);
       }
+      const eventSpawnTerminalLine = new Event('spawnTerminalLine');
+      document.dispatchEvent(eventSpawnTerminalLine);
   };
 
     return (
         <div class="terminal">
-            <label htmlFor="name">{user}@{host} ~</label>
+            <label htmlFor="name">guest@Server2 ~</label>
             <input
                 type="text"
                 value={input}
@@ -42,7 +36,7 @@ function Terminal() {
                 autoFocus={true}
                 onKeyDown={(e) => {
                     if (e.key === 'Enter') {
-                        handleCommand(input, setOutput, output, setUser, setHost, setHistory, setHistoryIndex, history, historyIndex);
+                        handleCommand(input, setOutput, output, setHistory, setHistoryIndex, history, historyIndex);
                         const inputs = document.querySelectorAll('.terminal input');
                         const inputNewestIndex = inputs.length - 1
                         const inputNewest = inputs.item(inputNewestIndex)
