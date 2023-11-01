@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function Terminal() {
+function Terminal({ searchParams }) {
     const [input, setInput] = useState('');
     const [output, setOutput] = useState("");
     const [history, setHistory] = useState([]);
@@ -28,7 +28,7 @@ function Terminal() {
 
     return (
         <div class="terminal">
-            <label htmlFor="name">guest@Server2 ~</label>
+            <label htmlFor="name">{searchParams.get('user')}@Server2 ~</label>
             <input
                 type="text"
                 value={input}

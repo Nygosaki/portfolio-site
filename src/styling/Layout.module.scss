@@ -1,0 +1,13 @@
+@import "../styling/mixins";
+@import "../styling/variables";
+
+.content {
+  @include display-flex();
+  @include align-items-center();
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-top: 25vh;
+  text-align: center;
+}
