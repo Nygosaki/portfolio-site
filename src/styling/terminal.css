@@ -29,3 +29,12 @@ body {
   .terminal-cursor {
     color: blinking;
   }
+
+  .image_output {
+    width: 30vw;
+    height: 25vh;
+    display: block; /* remove extra space below image */
+}
+  .outputClass {
+    white-space: break-spaces
+  }

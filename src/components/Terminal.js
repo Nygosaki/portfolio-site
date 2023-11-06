@@ -23,7 +23,7 @@ function Terminal({ searchParams }) {
               setOutput("Bye!");
               break;
           case 'neofetch':
-            setOutput("<p>I wonder how bread tastes :3</p>");
+            setOutput('<p>       _,met$$$$$gg.</p><p>    ,g$$$$$$$$$$$$$$$P.</p><p>  ,g$$P"     """Y$$.".</p><p> ,$$P\'              `$$$.</p><p>\',$$P       ,ggs.     `$$b:   ' + searchParams.get("user") + '@Server2</p><p>`d$$\'     ,$P"\'   .    $$$    --------------------------------</p><p> $$P      d$\'     ,    $$P    OS: Debian GNU/Linux 11 (bullseye) x86_64</p><p> $$:      $$.   -    ,d$$\'    Host: Google Compute Engine</p><p> $$;      Y$b._   _,d$P\'      Kernel: 6.1.42+</p><p> Y$$.    `.`"Y$$$$P"\'         Uptime: 1+ years</p><p> `$$b      "-.__              Packages: 733 (dpkg)</p><p>  `Y$$                        Shell: bash 5.1.4</p><p>   `Y$$.                      Terminal: /dev/pts/1</p><p>     `$$b.                    CPU: Intel Xeon (4) @ 2.199GHz</p><p>       `Y$$b.                 Memory: ' + (Math.floor(Math.random() * (16002 - 300 + 1)) + 300) + 'MiB / 16002MiB</p><p>          `"Y$b._</p><p>              `"""                                    </p><p>                                                      </p>');
             document.title = "Oh Bread!"
             break;
           case 'cute':
