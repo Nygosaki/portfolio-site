@@ -19,6 +19,9 @@ function Terminal({ searchParams }) {
           case 'bye':
               setOutput("Bye!");
               break;
+          case 'neofetch':
+            setOutput("<p>neo:3</p>")
+            break;
           default:
               setOutput('Invalid command: ' + inputCommand);
       }
@@ -62,7 +65,7 @@ function Terminal({ searchParams }) {
             />
           <span class="terminal-cursor">$ </span>
           {input}
-          <p>{output}</p>
+          <div className='outputClass' dangerouslySetInnerHTML={{__html: output}}></div>
         </div>
     );
   }
