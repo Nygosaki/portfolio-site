@@ -18,7 +18,7 @@
 }
 
 @mixin input-placeholder() {
-  &::-webkit-input-placeholder,
+  // &::-webkit-input-placeholder,
   &::-moz-placeholder,
   &::-ms-input-placeholder,
   &::placeholder {
