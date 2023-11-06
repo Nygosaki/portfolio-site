@@ -13,6 +13,9 @@ function Terminal({ searchParams }) {
       console.debug(history.length);
       console.debug(historyIndex);
       switch (inputCommand.split(' ')[0]) {
+          case 'help':
+            setOutput("Hey there. Sorry, but the commands are still under construction. Thank you for helping me test everything :>");
+            break;
           case 'hello':
               setOutput("Hi!");
               break;
@@ -20,10 +23,15 @@ function Terminal({ searchParams }) {
               setOutput("Bye!");
               break;
           case 'neofetch':
-            setOutput("<p>neo:3</p>")
+            setOutput("<p>I wonder how bread tastes :3</p>");
+            document.title = "Oh Bread!"
+            break;
+          case 'cute':
+            setOutput("<p>OOO THATS RIGHT, YOU ARE MY KUTE LITTELE KITTEN :3</p>");
+            document.title = "Love you Ashley<3";
             break;
           default:
-              setOutput('Invalid command: ' + inputCommand);
+              setOutput('<p>Invalid command: ' + inputCommand + '</p><p>Please try running the `help` command</p>');
       }
       const eventSpawnTerminalLine = new Event('spawnTerminalLine');
       document.dispatchEvent(eventSpawnTerminalLine);

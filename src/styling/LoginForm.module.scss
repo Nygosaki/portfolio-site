@@ -3,7 +3,8 @@
 @import "../styling/extensions";
 
 .form {
-  display: column;   // Change from display: grid to display: flex
+  display: flex;   // Change from display: grid to display: flex
+  flex-direction: column;
   justify-content: center; // Center horizontally
   align-items: center;    // Center vertically
   // margin: $main-margin * 4;

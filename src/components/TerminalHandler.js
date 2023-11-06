@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styling/terminal.css';
 import Terminal from './Terminal';
 import {Route, Link, Routes, useLocation, BrowserRouter} from 'react-router-dom';
@@ -27,10 +27,13 @@ function TerminalHandler() {
     console.log(searchParams);
     console.log(searchParams.get('user'));
 
+    useEffect(() => {
+      addTerminal(); // Automatically call addTerminal when the component mounts
+  }, []);
+
 
     return (
         <div>
-            <button onClick={addTerminal}>Add Terminal</button>
             <div className="terminals-container">{terminals}</div>
         </div>
     )
