@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import '../styling/terminal.css';
 import Terminal from './Terminal';
-import {Route, Link, Routes, useLocation, BrowserRouter} from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+// import { useTerminalContext } from './TerminalContext';
 
 function TerminalHandler() {
     const [terminals, setTerminals] = useState([]);
-    const location = useLocation();
+    // const location = useLocation();
+    // const { history, setHistory, historyIndex, setHistoryIndex } = useTerminalContext();
 
     const focus = () => {
       const inputs = document.querySelectorAll('.terminal input');
@@ -16,7 +18,7 @@ function TerminalHandler() {
     document.addEventListener('click', focus);
   
     const addTerminal = () => {
-      setTerminals([...terminals, <Terminal key={terminals.length} searchParams={searchParams}/>]);
+      setTerminals([...terminals, <Terminal key={terminals.length} searchParams={searchParams} />]);
     };
     document.addEventListener('spawnTerminalLine', addTerminal);
 
@@ -24,8 +26,6 @@ function TerminalHandler() {
       return new URLSearchParams(useLocation().search);
     }
     const searchParams = useQuery();
-    console.log(searchParams);
-    console.log(searchParams.get('user'));
 
     useEffect(() => {
       addTerminal(); // Automatically call addTerminal when the component mounts

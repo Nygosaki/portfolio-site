@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
+import { useTerminalContext } from './TerminalContext';
 
 function Terminal({ searchParams }) {
     const [input, setInput] = useState('');
     const [output, setOutput] = useState("");
-    const [history, setHistory] = useState([]);
-    const [historyIndex, setHistoryIndex] = useState(0);
+    const { history, setHistory, historyIndex, setHistoryIndex } = useTerminalContext();
+    // onst [history, setHistory] = useState([]);
+    // const [historyIndex, setHistoryIndex] = useState(0);
   
     const handleCommand = (inputCommand) => {
       setHistory([...history, inputCommand]);
       setHistoryIndex(history.length + 1);
-      console.debug("You just confirmed a command!");
-      console.debug(history.length);
-      console.debug(historyIndex);
+      console.log(history)
       switch (inputCommand.split(' ')[0]) {
           case 'help':
             setOutput("Hey there. Sorry, but the commands are still under construction. Thank you for helping me test everything :>");
@@ -47,22 +47,26 @@ function Terminal({ searchParams }) {
                 autoFocus={true}
                 onKeyDown={(e) => {
                     if (e.key === 'Enter') {
-                        handleCommand(input, setOutput, output, setHistory, setHistoryIndex, history, historyIndex);
+                        handleCommand(input);
                         const inputs = document.querySelectorAll('.terminal input');
                         const inputNewestIndex = inputs.length - 1
                         const inputNewest = inputs.item(inputNewestIndex)
                         inputNewest.disabled = true;
                     } else if (e.key === 'ArrowUp') {
+                      console.log("Arrow Up")
                         // Make sure that the history index is within the bounds of the history list
                         if (historyIndex !== 0) {
+                          console.log("History Index within bounds")
                           setInput(history[historyIndex-1]);
                           setHistoryIndex(historyIndex - 1);
                         } else {
                           // The user is at the beginning of the history list
                         }
                       } else if (e.key === 'ArrowDown') {
+                        console.log("Arrow Down")
                         // Make sure that the history index is within the bounds of the history list
                         if (historyIndex !== history.length) {
+                          console.log("History Index within bounds")
                           setInput(history[historyIndex +1 ]);
                           setHistoryIndex(historyIndex + 1);
                         } else {
