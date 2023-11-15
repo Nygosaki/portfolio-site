@@ -4,6 +4,16 @@ body {
     color: white;
   }
 
+  .column-wrapper {
+        display: flex;
+        flex-direction: column; /* Display terminals in a column layout */
+    }
+        
+  .row-wrapper {
+      display: flex;
+      flex-direction: row; /* Display terminals in a column layout */
+  }
+
   .terminals-container {
     display: flex;
     flex-direction: column; /* Display terminals in a column layout */
@@ -12,6 +22,7 @@ body {
   
   .terminal {
     white-space: nowrap; /* Prevent text from wrapping */
+    font-size: calc(4px + 0.9vw);
   }
 
   .terminal input {
@@ -30,11 +41,31 @@ body {
     color: blinking;
   }
 
-  .image_output {
-    width: 30vw;
-    height: 25vh;
-    display: block; /* remove extra space below image */
-}
   .outputClass {
     white-space: break-spaces
+  }
+
+  span.neofetchtext {
+    color: rgb(220, 63, 54);
+  }
+
+  .horizontalAlign{
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    /*justify-content: center; */
+    /*white-space: pre-wrap; */
+  }
+
+  span.descriptor {
+    color: gray;
+  }
+
+  img.iconSocial {
+    min-width: 15px;
+    max-width: 3vw;
+    padding-left: 2vw;
+    padding-top: 2vh;
   }

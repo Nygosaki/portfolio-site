@@ -23,12 +23,15 @@ function Terminal({ searchParams }) {
               setOutput("Bye!");
               break;
           case 'neofetch':
-            setOutput('<p>       _,met$$$$$gg.</p><p>    ,g$$$$$$$$$$$$$$$P.</p><p>  ,g$$P"     """Y$$.".</p><p> ,$$P\'              `$$$.</p><p>\',$$P       ,ggs.     `$$b:   ' + searchParams.get("user") + '@Server2</p><p>`d$$\'     ,$P"\'   .    $$$    --------------------------------</p><p> $$P      d$\'     ,    $$P    OS: Debian GNU/Linux 11 (bullseye) x86_64</p><p> $$:      $$.   -    ,d$$\'    Host: Google Compute Engine</p><p> $$;      Y$b._   _,d$P\'      Kernel: 6.1.42+</p><p> Y$$.    `.`"Y$$$$P"\'         Uptime: 1+ years</p><p> `$$b      "-.__              Packages: 733 (dpkg)</p><p>  `Y$$                        Shell: bash 5.1.4</p><p>   `Y$$.                      Terminal: /dev/pts/1</p><p>     `$$b.                    CPU: Intel Xeon (4) @ 2.199GHz</p><p>       `Y$$b.                 Memory: ' + (Math.floor(Math.random() * (16002 - 300 + 1)) + 300) + 'MiB / 16002MiB</p><p>          `"Y$b._</p><p>              `"""                                    </p><p>                                                      </p>');
+            setOutput('<p>       _,met$$$$$gg.</p><p>    ,g$$$$$$$$$$$$$$$P.</p><p>  ,g$$P"     """Y$$.".</p><p> ,$$P\'              `$$$.</p><p>\',$$P       ,ggs.     `$$b:   <span class="neofetchtext">' + searchParams.get("user") + '</span>@<span class="neofetchtext">Server2</span></p><p>`d$$\'     ,$P"\'   <span class="neofetchtext">.</span>    $$$    --------------------------------</p><p> $$P      d$\'     <span class="neofetchtext">,</span>    $$P    <span class="neofetchtext">OS</span>: Debian GNU/Linux 11 (bullseye) x86_64</p><p> $$:      $$.   <span class="neofetchtext">-</span>    ,d$$\'    <span class="neofetchtext">Host</span>: Google Compute Engine</p><p> $$;      Y$b._   _,d$P\'      <span class="neofetchtext">Kernel</span>: 6.1.42+</p><p> Y$$.    <span class="neofetchtext">`.</span>`"Y$$$$P"\'         <span class="neofetchtext">Uptime</span>: 1+ years</p><p> `$$b      <span class="neofetchtext">"-.__</span>              <span class="neofetchtext">Packages</span>: 733 (dpkg)</p><p>  `Y$$                        <span class="neofetchtext">Shell</span>: bash 5.1.4</p><p>   `Y$$.                      <span class="neofetchtext">Terminal</span>: /dev/pts/1</p><p>     `$$b.                    <span class="neofetchtext">CPU</span>: Intel Xeon (4) @ 2.199GHz</p><p>       `Y$$b.                 <span class="neofetchtext">Memory</span>: ' + (Math.floor(Math.random() * (16002 - 300 + 1)) + 300) + 'MiB / 16002MiB</p><p>          `"Y$b._</p><p>              `"""                                    </p><p>                                                      </p>');
             document.title = "Oh Bread!"
             break;
           case 'cute':
             setOutput("<p>OOO THATS RIGHT, YOU ARE MY KUTE LITTELE KITTEN :3</p>");
             document.title = "Love you Ashley<3";
+            break;
+          case 'intro':
+            setOutput('')
             break;
           default:
               setOutput('<p>Invalid command: ' + inputCommand + '</p><p>Please try running the `help` command</p>');
@@ -39,6 +42,46 @@ function Terminal({ searchParams }) {
 
     return (
         <div class="terminal">
+          <div className='horizontalAlign'>
+          <p>+<br />|<br />|<br />|<br />|<br />|<br />|<br />|<br />|<br />|<br />|<br />|<br />|<br />|<br />+</p>
+          <div className='intro'>
+            <p>---------------------------------------------------------------------------</p>
+            <div className='horizontalAlign'>
+              <img src={require("../assets/pfp.png")} style={{maxWidth:"8vw", paddingLeft:"1vw"}} alt=''/>
+              <p style={{paddingLeft:"1vw"}}><strong>Hey there!</strong><br />
+              My name's <strong>Nygosaki</strong> <span class="descriptor">(She/Any)</span><br />
+              I am a programmer, also interasted in<br />
+              general IT, cybersecurity and pentesting.<br />
+              Currently focusing on bots and other 'malicious' programs.<br />
+              Commissions are open btw :3<br />
+              </p>
+              </div>
+              <div className='horizontalAlign'>
+              <a href='https://github.com/Nygosaki'>
+              <img src={require("../assets/icoGithub.png")} className='iconSocial' style={{paddingLeft:"10vw"}} alt='Github'/>
+              </a>
+              <a href='https://discord.gg/sFzqJk9R7E'>
+              <img src={require("../assets/icoDiscord.png")} className='iconSocial' alt='Discord'/>
+              </a>
+              <a href='https://www.last.fm/user/MeLikeFish'>
+              <img src={require("../assets/icoLastfm.png")} className='iconSocial' alt='Last.fm'/>
+              </a>
+              <a href='https://www.tumblr.com/blog/melikefish'>
+              <img src={require("../assets/icoTumblr.png")} className='iconSocial' alt='Tumblr'/>
+              </a>
+              <a href='https://steamcommunity.com/profiles/76561198433226986'>
+              <img src={require("../assets/icoSteam.png")} className='iconSocial' alt='Discord'/>
+              </a>
+              </div>
+              <p>---------------------------------------------------------------------------<br /></p>
+              <div className='horizontalAlign'>
+              <p style={{paddingLeft:'10vw'}}>This is a manually emulated interactive CLI.<br />
+              You should run the `help` command to get started :3</p>
+              </div>
+              <p>---------------------------------------------------------------------------</p>
+            </div>
+            <p>+<br />|<br />|<br />|<br />|<br />|<br />|<br />|<br />|<br />|<br />|<br />|<br />|<br />|<br />+</p>
+            </div>
             <label htmlFor="name">{searchParams.get('user')}@Server2 ~</label>
             <input
                 type="text"
