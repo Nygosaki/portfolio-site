@@ -1,64 +1,65 @@
-@import "../styling/mixins";
-@import "../styling/variables";
-@import "../styling/extensions";
+  @import "../styling/mixins";
+  @import "../styling/extensions";
 
-.form {
-  display: flex;   // Change from display: grid to display: flex
-  flex-direction: column;
-  justify-content: center; // Center horizontally
-  align-items: center;    // Center vertically
-  // margin: $main-margin * 4;
-  width: 433px;
-  @include media-max-width() {
-    width: 95%;
+  .form {
+    display: flex;   // Change from display: grid to display: flex
+    flex-direction: column;
+    justify-content: center; // Center horizontally
+    align-items: center;    // Center vertically
+    // margin: $main-margin * 4;
+    // width: 600px;
+    @include media-max-width() {
+      width: 95%;
+    }
   }
-}
 
-input {
-  @include input-placeholder();
-  padding-left: 75px;
-}
-
-.input {
-  @extend .mainInputStyle;
-  border: 1px solid #fff;
-  margin-top: $main-margin * 2;
-  margin-right: 3px;
-  color: lightgray;
-  // flex: 1; // Add this property to make the input take up available space
-
-}
-.loginBtn {
-  @extend .mainInputStyle;
-  border: 1px solid #ffffff;
-  margin-top: $main-margin * 2;
-  font-size: x-large;
-  color: $submit-color;
-  min-width: 60px; /* Adjust the width to your desired size */
-  height: 54px; /* Adjust the height to your desired size */
-  cursor: pointer;
-  &:active {
-    opacity: 50%;
+  input {
+    @include input-placeholder();
+    padding-left: 11vw;
   }
-  &:hover {
-    filter: invert(50%);
+
+  .input {
+    @extend .mainInputStyle;
+    border: 1px solid #fff;
+    margin-top: 2.6vh;
+    margin-right: 0.4vw;
+    color: lightgray;
+    // flex: 1; // Add this property to make the input take up available space
+
   }
-}
-.icon {
-  position: absolute;
-  margin-top: $main-margin * 3;
-  margin-left: $main-margin * 2;
-}
+  .loginBtn {
+    @extend .mainInputStyle;
+    // border: 1px solid #ffffff;
+    margin-top: 2.6vh;
+    font-size: x-large;
+    color: #ffffff;
+    width: 7.5vw; /* Adjust the width to your desired size */
+    height: 7vh; /* Adjust the height to your desired size */
+    cursor: pointer;
+    &:active {
+      opacity: 50%;
+    }
+    &:hover {
+      filter: invert(50%);
+    }
+  }
+  .icon {
+    width: 5.2vw;
+    height: 5vh;
+    position: absolute;
+    margin-top: 3.8vh;
+    margin-left: 3vw;
+  }
 
-/* Add styles for the input container */
-.inputContainer {
-  display: flex;
-  justify-content: space-between;
-}
+  /* Add styles for the input container */
+  .inputContainer {
+    display: flex;
+    justify-content: space-between;
+  }
 
-.hintText {
-  text-align: center; /* Center the hint text */
-  margin-top: 10px; /* Adjust the margin as needed */
-  color: #868686; /* Set the color of the hint text */
-  font-size: small;
-}
+  .hintText {
+    text-align: center; /* Center the hint text */
+    margin-top: 1vh; /* Adjust the margin as needed */
+    color: #868686; /* Set the color of the hint text */
+    font-size: small;
+  }
