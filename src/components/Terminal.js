@@ -16,11 +16,11 @@ function Terminal({ searchParams }) {
           case 'help':
             setOutput("Hey there. Sorry, but the commands are still under construction. Thank you for helping me test everything :>");
             break;
-          case 'hello':
-              setOutput("Hi!");
+          case 'credits':
+              setOutput("Thanks to my beutiful girlfriend, UwU (the beatsaber player) for helping me with some CSS :>");
               break;
-          case 'bye':
-              setOutput("Bye!");
+          case 'commissions':
+              setOutput("If you want to comission some app (or most likely botting tools), my rates are $20 per hour of work (though I am leniant with what I call an hour of work). Contact me on Discord for further details.");
               break;
           case 'neofetch':
             setOutput('<p>       _,met$$$$$gg.</p><p>    ,g$$$$$$$$$$$$$$$P.</p><p>  ,g$$P"     """Y$$.".</p><p> ,$$P\'              `$$$.</p><p>\',$$P       ,ggs.     `$$b:   <span class="neofetchtext">' + searchParams.get("user") + '</span>@<span class="neofetchtext">Server2</span></p><p>`d$$\'     ,$P"\'   <span class="neofetchtext">.</span>    $$$    --------------------------------</p><p> $$P      d$\'     <span class="neofetchtext">,</span>    $$P    <span class="neofetchtext">OS</span>: Debian GNU/Linux 11 (bullseye) x86_64</p><p> $$:      $$.   <span class="neofetchtext">-</span>    ,d$$\'    <span class="neofetchtext">Host</span>: Google Compute Engine</p><p> $$;      Y$b._   _,d$P\'      <span class="neofetchtext">Kernel</span>: 6.1.42+</p><p> Y$$.    <span class="neofetchtext">`.</span>`"Y$$$$P"\'         <span class="neofetchtext">Uptime</span>: 1+ years</p><p> `$$b      <span class="neofetchtext">"-.__</span>              <span class="neofetchtext">Packages</span>: 733 (dpkg)</p><p>  `Y$$                        <span class="neofetchtext">Shell</span>: bash 5.1.4</p><p>   `Y$$.                      <span class="neofetchtext">Terminal</span>: /dev/pts/1</p><p>     `$$b.                    <span class="neofetchtext">CPU</span>: Intel Xeon (4) @ 2.199GHz</p><p>       `Y$$b.                 <span class="neofetchtext">Memory</span>: ' + (Math.floor(Math.random() * (16002 - 300 + 1)) + 300) + 'MiB / 16002MiB</p><p>          `"Y$b._</p><p>              `"""                                    </p><p>                                                      </p>');
@@ -45,6 +45,9 @@ function Terminal({ searchParams }) {
             <label htmlFor="name">{searchParams.get('user')}@Server2 ~</label>
             <input
                 type="text"
+                autoCapitalize='off'
+                autoComplete='off'
+                autoCorrect='off'
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 autoFocus={true}

@@ -30,7 +30,7 @@ input {
 }
 .loginBtn {
   @extend .mainInputStyle;
-  border: 1px solid $submit-color;
+  border: 1px solid #ffffff;
   margin-top: $main-margin * 2;
   font-size: x-large;
   color: $submit-color;
