@@ -41,10 +41,6 @@ body {
     color: blinking;
   }
 
-  .outputClass {
-    white-space: break-spaces
-  }
-
   span.neofetchtext {
     color: rgb(220, 63, 54);
   }
@@ -68,4 +64,40 @@ body {
     max-width: 3vw;
     padding-left: 2vw;
     padding-top: 2vh;
+  }
+
+  img.credits {
+    min-width: 15px;
+    max-width: 10vw;
+    padding-right: 1vw;
+    border-radius: 50%;
+  }
+
+  img.largeImage {
+    max-width: 50vw;
+    display: flex;
+  }
+
+  a:link {
+    color: white; 
+    background-color: transparent; 
+    text-decoration: underline;
+  }
+  
+  a:visited {
+    color: white;
+    background-color: transparent;
+    text-decoration: underline;
+  }
+  
+  a:hover {
+    color: lightslategray;
+    background-color: transparent;
+    text-decoration: underline;
+  }
+  
+  a:active {
+    color: white;
+    background-color: transparent;
+    text-decoration: underline;
   }
