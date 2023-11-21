@@ -40,7 +40,7 @@ function TerminalHandler() {
           <div className='intro'>
             <p>---------------------------------------------------------------------------</p>
             <div className='horizontalAlign'>
-              <img src={require("../assets/pfp.png")} style={{maxWidth:"8vw", paddingLeft:"1vw"}} alt=''/>
+              <img src={require("../assets/pfp.png")} style={{width:"8vw", paddingLeft:"1vw"}} alt=''/>
               <p style={{paddingLeft:"1vw"}}><strong>Hey there!</strong><br />
               My name's <strong>Nygosaki</strong> <span class="descriptor">(She/Any)</span><br />
               I am a programmer, also interasted in<br />

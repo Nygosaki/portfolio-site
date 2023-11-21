@@ -65,7 +65,7 @@ body {
 
   img.iconSocial {
     min-width: 15px;
-    max-width: 3vw;
+    width: 3vw;
     padding-left: 2vw;
     padding-top: 2vh;
   }

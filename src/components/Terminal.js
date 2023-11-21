@@ -49,9 +49,10 @@ function Terminal({ searchParams }) {
 
     return (
         <div class="terminal">
-            <label htmlFor="name">{searchParams.get('user')}@Server2 ~</label>
+            <label for="commandinput">{searchParams.get('user')}@Server2 ~</label>
             <input
                 type="text"
+                aria-label="Command Input"
                 autoCapitalize='off'
                 autoComplete='off'
                 autoCorrect='off'
