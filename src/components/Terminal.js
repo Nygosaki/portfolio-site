@@ -20,7 +20,7 @@ function Terminal({ searchParams }) {
             setOutput(`
             <div class="horizontalAlign">
               <img src="ashley.jpeg" class='credits'/>
-              <p>Thanks to:<br />My beutiful girlfriend, <a href=https://github.com/Ash-does-stuff>Ash-does-stuff</a><br />For helping with some css :></p>
+              <p>Thanks to:<br />My beutiful girlfriend, <a href=https://github.com/Ash-does-stuff>Ash-does-stuff</a><br />For helping with some css,<br />teaching me a lot of JS,<br />and coming up with good suggestions :></p>
             </div>
             `);   
             document.title = "Love you Ashley<3";       
