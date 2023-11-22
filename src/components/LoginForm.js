@@ -35,9 +35,20 @@ function LoginForm() {
     // Redirect the user to the constructed URL
     // window.location.href = redirectURL;
   };
-  
 
+  const legalHandler = (event) => {
+    event.preventDefault();
+  
+    viewNavigate('/legal');
+    // Construct the URL with the username and password
+    // const redirectURL = `/terminal?user=${username}&pass=${password}`;
+  
+    // Redirect the user to the constructed URL
+    // window.location.href = redirectURL;
+  };
+  
   return (
+    <div>
     <form onSubmit={submitHandler} className={classes.form}>
       <div className={classes.inputContainer}>
       <div>
@@ -89,6 +100,10 @@ function LoginForm() {
       {/* Add the hint text below the input container */}
       <p className={classes.hintText}>Hint: Just try something :)</p>
     </form>
+    <div className={classes.legal}>
+      <p onClick={legalHandler}><a href="#">Legal</a></p>
+    </div>
+    </div>
   );
 }
 

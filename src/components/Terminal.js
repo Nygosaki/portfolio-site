@@ -14,7 +14,7 @@ function Terminal({ searchParams }) {
       console.log(history)
       switch (inputCommand.split(' ')[0]) {
           case 'help':
-            setOutput('<p>Hey there. Sorry, but the commands are still under construction. Thank you for helping me test everything :><br />help - get the current list of commands with secrets hidden<br />commissions - see info about my programming commissions<br />neofetch - generate a neofetch of the server<br />credits - see who helped in the creation of this website<br />cuteimage - check out this cute image :3<br /><3');
+            setOutput('<p>Hey there. Sorry, but the commands are still under construction. Thank you for helping me test everything :><br />help - get the current list of commands with secrets hidden<br />commissions - see info about my programming commissions<br />neofetch - generate a neofetch of the server<br />credits - see who helped in the creation of this website<br />cuteimage - check out this cute image :3<br />legal - see the legal regulatory documents<br /><3');
             break;
           case 'credits':
             setOutput(`
@@ -40,6 +40,9 @@ function Terminal({ searchParams }) {
               <img src="coupleArt.jpg" class='largeImage'/>
           `);  
             break;
+            case 'legal':
+              setOutput(`<p><a href='/legal/cookies'>CookiePolicy</a></p><p><a href='/legal/privacy'>PrivacyPolicy</a></p><p><a href='/legal/tos'>TermsOfService</a></p><p><a href='/legal/copyright'>Copyright</a></p>`);       
+              break;
           default:
               setOutput('<p>Invalid command: ' + inputCommand + '</p><p>Please try running the `help` command</p>');
       }

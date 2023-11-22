@@ -53,3 +53,27 @@
 }
 
 input:focus { color: white; }
+
+a:link {
+  color: gray; 
+  background-color: transparent; 
+  text-decoration: underline;
+}
+
+a:visited {
+  color: gray;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: lightslategray;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+a:active {
+  color: gray;
+  background-color: transparent;
+  text-decoration: underline;
+}
