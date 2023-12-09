@@ -77,3 +77,38 @@ a:active {
   background-color: transparent;
   text-decoration: underline;
 }
+
+@keyframes slide {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  40% {
+    -webkit-transform: translateX(-1vw);
+            transform: translateX(-1vw);
+  }
+  80% {
+    -webkit-transform: translateX(2vw);
+            transform: translateX(2vw);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+
+/* .enter {
+  animation: 
+    slide 2s ease-in-out 3s forwards;
+} */
+
+@keyframes fwd {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(100px); }
+}
+
+.enter.enterAnimate {
+  position: relative;
+  animation: fwd 2.5s ease-in 1;
+}

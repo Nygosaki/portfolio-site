@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 import classes from "../styling/LoginForm.module.scss";
@@ -9,6 +9,7 @@ import "../styling/login.css"
 function LoginForm() {
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
+  const inputContainerRef = useRef(null);
 
   const navigate = useNavigate();
   const viewNavigate = (newRoute) => {
@@ -27,8 +28,14 @@ function LoginForm() {
   
     const username = emailInputRef.current.value;
     const password = passwordInputRef.current.value;
-  
-    viewNavigate('/terminal?user=' + username + '&pass=' + password);
+
+    document.querySelector('.enter').classList.add('enterAnimate');
+    console.log("Login attempt: ")
+    
+    setTimeout(() => {
+      viewNavigate('/terminal?user=' + username + '&pass=' + password);
+    }, 1000);
+
     // Construct the URL with the username and password
     // const redirectURL = `/terminal?user=${username}&pass=${password}`;
   
@@ -49,8 +56,25 @@ function LoginForm() {
   
   return (
     <div>
+    <div className={classes.imageContainer}>
+      <img src={require("../assets/pfp.png")} style={{width: "8vw", minWidth: "70px"}} alt=''/>
+      <svg className={classes.loader} viewBox="-10 -10 70 70">
+        <defs>
+          <filter id="glow" x="-100%" y="-100%" width="300%" height="300%">
+            <feDropShadow stdDeviation="1" floodColor="#3498db" dx="0" dy="0" floodOpacity="1"/>
+            <feDropShadow stdDeviation="1" floodColor="#3498db" dx="0" dy="0" floodOpacity="1"/>
+            <feDropShadow stdDeviation="2" floodColor="#3498db" dx="0" dy="0" floodOpacity="1"/>
+            <feDropShadow stdDeviation="3" floodColor="#3498db" dx="0" dy="0" floodOpacity="1"/>
+            <feDropShadow stdDeviation="5" floodColor="#3498db" dx="0" dy="0" floodOpacity="1"/>
+          </filter>
+        </defs>
+        <circle className={classes.path} cx="25" cy="25" r="20" fill="none" strokeWidth="1"></circle>
+      </svg>
+    </div>
+    <div className={classes.welcomeMain}><p>Welcome to: <span class={classes.welcomeText} /></p></div>
     <form onSubmit={submitHandler} className={classes.form}>
-      <div className={classes.inputContainer}>
+      <div className={classes.inputContainer} ref={inputContainerRef}>
+        <div className={classes.centeredContent}>
       <div>
         <img
           className={classes.icon}
@@ -88,18 +112,20 @@ function LoginForm() {
           required={true}
         ></input>
       </div>
+      </div>
 
       <button
         className={classes.loginBtn}
         disabled={false}
       >
-      {">"}
+      <div className="enter">{">"}</div>
       </button>
       </div>
 
       {/* Add the hint text below the input container */}
       <p className={classes.hintText}>Hint: Just try something :)</p>
     </form>
+    <p className={classes.tipClass}>Pro tip: <span className={classes.tipText}></span></p>
     <div className={classes.legal}>
       <p onClick={legalHandler}><a href="#">Legal</a></p>
     </div>

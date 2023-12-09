@@ -13,7 +13,9 @@ function TerminalHandler() {
       const inputs = document.querySelectorAll('.terminal input');
       const inputNewestIndex = inputs.length - 1
       const inputNewest = inputs.item(inputNewestIndex)
-      inputNewest.focus();
+      if (inputNewest) {
+        inputNewest.focus();
+      }
     };
     document.addEventListener('click', focus);
   
