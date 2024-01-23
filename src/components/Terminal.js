@@ -8,13 +8,14 @@ function Terminal({ searchParams }) {
     // onst [history, setHistory] = useState([]);
     // const [historyIndex, setHistoryIndex] = useState(0);
   
+    //TODO add file system
     const handleCommand = (inputCommand) => {
       setHistory([...history, inputCommand]);
       setHistoryIndex(history.length + 1);
       console.log(history)
       switch (inputCommand.split(' ')[0]) {
           case 'help':
-            setOutput('<p>Hey there. Sorry, but the commands are still under construction. Thank you for helping me test everything :><br />help - get the current list of commands with secrets hidden<br />commissions - see info about my programming commissions<br />neofetch - generate a neofetch of the server<br />credits - see who helped in the creation of this website<br />legal - see the legal regulatory documents<br /><3');
+setOutput(`<p class="helpTitle"><b>-General Commands Manual-</b></p><p>    help    - <i>See this list</i><br />commissions - <i>Print information about programming commissions</i><br />     ls     - <i>List information about files</i><br />    open    - <i>Concatenate and print (display) the content of files</i><br />  neofetch  - <i>Print a neofetch of the server</i><br />   credits  - <i>see who helped in the creation of this website</i><br />   legal    - <i>View regulatory documents</i><br /></p>`);
             break;
           case 'credits':
             setOutput(`
@@ -26,20 +27,55 @@ function Terminal({ searchParams }) {
             document.title = "Love you Ashley<3";       
             break;
           case 'commissions':
-              setOutput("<p>If you want to comission some app (or most likely botting tools), my rates are $10 per hour of work. <a href=https://discord.gg/sFzqJk9R7E>Contact me on Discord</a> for further details.</p>");
+              setOutput("<p>If you want to comission some app (or most likely botting tools), my rates are $5 per hour of work. <a href=https://discord.gg/sFzqJk9R7E>Contact me on Discord</a> for further details.</p>");
               break;
           case 'neofetch':
             setOutput('<p>       _,met$$$$$gg.</p><p>    ,g$$$$$$$$$$$$$$$P.</p><p>  ,g$$P"     """Y$$.".</p><p> ,$$P\'              `$$$.</p><p>\',$$P       ,ggs.     `$$b:   <span class="neofetchtext">' + searchParams.get("user") + '</span>@<span class="neofetchtext">Server2</span></p><p>`d$$\'     ,$P"\'   <span class="neofetchtext">.</span>    $$$    --------------------------------</p><p> $$P      d$\'     <span class="neofetchtext">,</span>    $$P    <span class="neofetchtext">OS</span>: Debian GNU/Linux 11 (bullseye) x86_64</p><p> $$:      $$.   <span class="neofetchtext">-</span>    ,d$$\'    <span class="neofetchtext">Host</span>: Google Compute Engine</p><p> $$;      Y$b._   _,d$P\'      <span class="neofetchtext">Kernel</span>: 6.1.42+</p><p> Y$$.    <span class="neofetchtext">`.</span>`"Y$$$$P"\'         <span class="neofetchtext">Uptime</span>: 1+ years</p><p> `$$b      <span class="neofetchtext">"-.__</span>              <span class="neofetchtext">Packages</span>: 733 (dpkg)</p><p>  `Y$$                        <span class="neofetchtext">Shell</span>: bash 5.1.4</p><p>   `Y$$.                      <span class="neofetchtext">Terminal</span>: /dev/pts/1</p><p>     `$$b.                    <span class="neofetchtext">CPU</span>: Intel Xeon (4) @ 2.199GHz</p><p>       `Y$$b.                 <span class="neofetchtext">Memory</span>: ' + (Math.floor(Math.random() * (16002 - 300 + 1)) + 300) + 'MiB / 16002MiB</p><p>          `"Y$b._</p><p>              `"""                                    </p><p>                                                      </p>');
             document.title = "Oh Bread!"
             break;
-          case 'intro':
-            setOutput(`Easteregg!`);       
-            break;
             case 'legal':
               setOutput(`<p><a href='/legal/cookies'>CookiePolicy</a></p><p><a href='/legal/privacy'>PrivacyPolicy</a></p><p><a href='/legal/tos'>TermsOfService</a></p><p><a href='/legal/copyright'>Copyright</a></p>`);       
               break;
-          default:
-              setOutput('<p>Invalid command: ' + inputCommand + '</p><p>Please try running the `help` command</p>');
+            case 'ls':
+                if (inputCommand.split(' ')[1] === '-a') {
+                    setOutput('<p>ashley.jpeg<br />anthony.jpg<br />coupleArt.jpg<br />favicon.ico<br />favicon2.ico<br />index.html<br />logo192.png<br />logo512.gif<br />logo512.png<br />manifest.json<br />robots.txt<br />sitemap.xml<br /></p>');
+                } else {
+                  setOutput('<p>anthony.jpg<br /></p>');
+                }
+                break;
+            case 'open':
+              switch (inputCommand.split(' ')[1].split('.')[1]) {
+                case 'txt':
+                  setOutput('<object data="' + inputCommand.split(' ')[1] + '" type="text/plain" width="100%" height="100%"></object>')
+                  break;
+                case 'json':
+                  setOutput('<object data="' + inputCommand.split(' ')[1] + '" type="application/json" width="100%" height="100%"></object>')
+                  break;
+                case 'xml':
+                  setOutput('<p>open: ' + inputCommand.split(' ')[1] + ': Unsuported file format<br />source - https://nygosaki.dev/' + inputCommand.split(' ')[1] + '</p>');
+                  break;
+                case 'jpeg':
+                  setOutput('<img src="' + inputCommand.split(' ')[1] + '" class="largeImage"/>');
+                break;
+                case 'jpg':
+                  setOutput('<img src="' + inputCommand.split(' ')[1] + '" class="largeImage"/>');
+                break;
+                case 'ico':
+                  setOutput('<img src="' + inputCommand.split(' ')[1] + '" class="largeImage"/>');
+                break;
+                case 'png':
+                  setOutput('<img src="' + inputCommand.split(' ')[1] + '" class="largeImage"/>');
+                break;
+                case 'gif':
+                  setOutput('<img src="' + inputCommand.split(' ')[1] + '" class="largeImage"/>');
+                break;
+                default:
+                  setOutput('<p>open: ' + inputCommand.split(' ')[1] + ': Unsuported file format or No such file or directory</p>');
+                    break;
+            }
+              break;
+        default:
+              setOutput('<p>shell: command not found: ' + inputCommand + '</p><p>Please try running the `help` command</p>');
       }
       const eventSpawnTerminalLine = new Event('spawnTerminalLine');
       document.dispatchEvent(eventSpawnTerminalLine);

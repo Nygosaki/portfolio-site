@@ -79,6 +79,7 @@ body {
 
   img.largeImage {
     max-width: 50vw;
+    max-height: 50vh;
     display: flex;
   }
 
@@ -109,3 +110,17 @@ body {
   p.legalText {
     font-size: 1.2vw;
   }
+
+  p.helpTitle {
+    text-align: center;
+   line-height: 2.4vh;
+   
+   }
+  
+   div.centered {
+    width: 640px; /* Can be in percentage also. */
+    height: auto;
+    margin: 0 auto;
+    padding: 10px;
+    position: relative;
+}
