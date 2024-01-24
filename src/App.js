@@ -23,12 +23,13 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route index element={<Login />} />
-          <Route path="/terminal" element={<TerminalProvider><TerminalHandler /></TerminalProvider>} />
-          <Route path="/legal" element={<Legal />} />
-          <Route path="/legal/cookies" element={<Cookie />} />
-          <Route path="/legal/privacy" element={<Privacy />} />
-          <Route path="/legal/tos" element={<TOS />} />
-          <Route path="/legal/copyright" element={<CopyrightLicense />} />
+          <Route exact path="/terminal" element={<TerminalProvider><TerminalHandler /></TerminalProvider>} />
+          <Route exact path="/legal" element={<Legal />} />
+          <Route exact path="/legal/cookies" element={<Cookie />} />
+          <Route exact path="/legal/privacy" element={<Privacy />} />
+          <Route exact path="/legal/tos" element={<TOS />} />
+          <Route exact path="/legal/copyright" element={<CopyrightLicense />} />
+          <Route path="*" element={<p>No such file or directory</p>}/>
         </Routes>
       </BrowserRouter>
     </div>
