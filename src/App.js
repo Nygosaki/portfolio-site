@@ -29,7 +29,7 @@ function App() {
           <Route exact path="/legal/privacy" element={<Privacy />} />
           <Route exact path="/legal/tos" element={<TOS />} />
           <Route exact path="/legal/copyright" element={<CopyrightLicense />} />
-          <Route path="*" element={<p>No such file or directory</p>}/>
+          <Route path="*" element={<p>404: No such file or directory</p>}/>
         </Routes>
       </BrowserRouter>
     </div>

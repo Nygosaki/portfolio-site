@@ -26,8 +26,34 @@ function LoginForm() {
   const submitHandler = (event) => {
     event.preventDefault();
   
-    const username = emailInputRef.current.value;
-    const password = passwordInputRef.current.value;
+    const username = emailInputRef.current.value.replace(/[&<>"'`/$=\\]/g, function(s) {
+      return {
+          '&': '',
+          '<': '',
+          '>': '',
+          '"': '',
+          "'": '',
+          '`': '',
+          '/': '',
+          '$': '',
+          '=': '',
+          '\\': ''
+      }[s];
+  });
+    const password = passwordInputRef.current.value.replace(/[&<>"'`/$=\\]/g, function(s) {
+      return {
+          '&': '',
+          '<': '',
+          '>': '',
+          '"': '',
+          "'": '',
+          '`': '',
+          '/': '',
+          '$': '',
+          '=': '',
+          '\\': ''
+      }[s];
+  });
 
     document.querySelector('.enter').classList.add('enterAnimate');
     console.log("Login attempt: ")
@@ -71,7 +97,7 @@ function LoginForm() {
         <circle className={classes.path} cx="25" cy="25" r="20" fill="none" strokeWidth="1"></circle>
       </svg>
     </div>
-    <div className={classes.welcomeMain}><p>Welcome to: <span class={classes.welcomeText} /></p></div>
+    <div className={classes.welcomeMain}><p>Welcome to: <span className={classes.welcomeText} /></p></div>
     <form onSubmit={submitHandler} className={classes.form}>
       <div className={classes.inputContainer} ref={inputContainerRef}>
         <div className={classes.centeredContent}>

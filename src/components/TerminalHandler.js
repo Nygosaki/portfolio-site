@@ -44,7 +44,7 @@ function TerminalHandler() {
             <div className='horizontalAlign'>
               <img src={require("../assets/pfp.png")} style={{width:"8vw", paddingLeft:"1vw"}} alt=''/>
               <p style={{paddingLeft:"1vw"}}><strong>Hey there!</strong><br />
-              My name's <strong>Nygosaki</strong> <span class="descriptor">(Any pronouns)</span><br />
+              My name's <strong>Nygosaki</strong> <span className="descriptor">(Any pronouns)</span><br />
               I am a programmer, also interasted in<br />
               general IT, cybersecurity and pentesting.<br />
               Currently focusing on bots and other 'malicious' programs.<br />
