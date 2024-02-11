@@ -66,7 +66,7 @@ function Terminal({ searchParams }) {
               break;
             case 'ls':
                 if (sanitizedInput.split(' ')[1] === '-a') {
-                    setOutput('<p>ashley.jpeg<br />anthony.jpg<br />coupleArt.jpg<br />favicon.ico<br />favicon2.ico<br />index.html<br />logo192.png<br />logo512.gif<br />logo512.png<br />manifest.json<br />robots.txt<br />sitemap.xml<br /></p>');
+                    setOutput('<p>ashley.jpeg<br />anthony.jpg<br />coupleArt.jpg<br />coupleArt2.jpg<br />favicon.ico<br />favicon2.ico<br />index.html<br />logo192.png<br />logo512.gif<br />logo512.png<br />manifest.json<br />robots.txt<br />sitemap.xml<br /></p>');
                 } else {
                   setOutput('<p>anthony.jpg<br /></p>');
                 }
