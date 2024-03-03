@@ -3,8 +3,8 @@ import '../styling/terminal.css';
 
 function Privacy(){
     return (
-        <div className='terminal'>
-            <p className='legalText'>
+        <div class='terminal'>
+            <p class='legalText'>
                 <h2>Privacy Policy</h2>
                 <h3>Privacy Assurance:</h3>
                 We prioritize and respect the privacy of our users.<br />

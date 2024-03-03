@@ -3,9 +3,9 @@ import '../styling/terminal.css';
 
 function Cookie(){
     return (
-        <div className='terminal'>
+        <div class='terminal'>
             <h2>Cookie Policy</h2>
-            <p className='legalText'>This website uses cookies to ensure its smooth operation and provide you with the best possible user experience.<br />
+            <p class='legalText'>This website uses cookies to ensure its smooth operation and provide you with the best possible user experience.<br />
             By continuing to browse this site, you agree to our use of essential cookies.<br />
             <h3>Essential Cookies:</h3>
             These cookies are necessary for the website to function properly.<br />

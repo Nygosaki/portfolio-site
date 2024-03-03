@@ -3,8 +3,8 @@ import '../styling/terminal.css';
 
 function CopyrightLicense(){
     return (
-        <div className='terminal'>
-            <p className='legalText'>
+        <div class='terminal'>
+            <p class='legalText'>
             <h2>Website and Code Copyright License</h2>
             This website and its associated code are protected by copyright law.<br />
             All rights are reserved. No part of the code or content may be copied, modified, sold, or used without<br /> explicit written permission from the website administrator.<br />

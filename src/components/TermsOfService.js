@@ -3,8 +3,8 @@ import '../styling/terminal.css';
 
 function TOS(){
     return (
-        <div className='terminal'>
-            <p className='legalText'>
+        <div class='terminal'>
+            <p class='legalText'>
                 <h2>Terms of Service</h2>
                 By accessing and using this website, you agree to comply with and be bound by the following terms and conditions:<br />
                 <h3>1. Security:</h3>

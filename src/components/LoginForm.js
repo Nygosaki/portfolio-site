@@ -82,9 +82,9 @@ function LoginForm() {
   
   return (
     <div>
-    <div className={classes.imageContainer}>
+    <div class={classes.imageContainer}>
       <img src={require("../assets/pfp.png")} style={{width: "8vw", minWidth: "70px"}} alt=''/>
-      <svg className={classes.loader} viewBox="-10 -10 70 70">
+      <svg class={classes.loader} viewBox="-10 -10 70 70">
         <defs>
           <filter id="glow" x="-100%" y="-100%" width="300%" height="300%">
             <feDropShadow stdDeviation="1" floodColor="#3498db" dx="0" dy="0" floodOpacity="1"/>
@@ -94,22 +94,22 @@ function LoginForm() {
             <feDropShadow stdDeviation="5" floodColor="#3498db" dx="0" dy="0" floodOpacity="1"/>
           </filter>
         </defs>
-        <circle className={classes.path} cx="25" cy="25" r="20" fill="none" strokeWidth="1"></circle>
+        <circle class={classes.path} cx="25" cy="25" r="20" fill="none" strokeWidth="1"></circle>
       </svg>
     </div>
-    <div className={classes.welcomeMain}><p>Welcome to: <span className={classes.welcomeText} /></p></div>
-    <form onSubmit={submitHandler} className={classes.form}>
-      <div className={classes.inputContainer} ref={inputContainerRef}>
-        <div className={classes.centeredContent}>
+    <div class={classes.welcomeMain}><p>Welcome to: <span class={classes.welcomeText} /></p></div>
+    <form onSubmit={submitHandler} class={classes.form}>
+      <div class={classes.inputContainer} ref={inputContainerRef}>
+        <div class={classes.centeredContent}>
       <div>
         <img
-          className={classes.icon}
+          class={classes.icon}
           src={usernameIcon}
           alt="Username icon"
           htmlFor="user-name"
         ></img>
         <input
-          className={classes.input}
+          class={classes.input}
           type="text"
           id="user-name"
           name="user-name"
@@ -122,13 +122,13 @@ function LoginForm() {
 
       <div>
         <img
-          className={classes.icon}
+          class={classes.icon}
           src={passwordIcon}
           alt="Password icon"
           htmlFor="user-password"
         ></img>
         <input
-          className={classes.input}
+          class={classes.input}
           type="password"
           id="user-password"
           name="user-password"
@@ -141,18 +141,18 @@ function LoginForm() {
       </div>
 
       <button
-        className={classes.loginBtn}
+        class={classes.loginBtn}
         disabled={false}
       >
-      <div className="enter">{">"}</div>
+      <div class="enter">{">"}</div>
       </button>
       </div>
 
       {/* Add the hint text below the input container */}
-      <p className={classes.hintText}>Hint: Just try something :)</p>
+      <p class={classes.hintText}>Hint: Just try something :)</p>
     </form>
-    <p className={classes.tipClass}>Pro tip: <span className={classes.tipText}></span></p>
-    <div className={classes.legal}>
+    <p class={classes.tipClass}>Pro tip: <span class={classes.tipText}></span></p>
+    <div class={classes.legal}>
       <p onClick={legalHandler}><a href="#">Legal</a></p>
     </div>
     </div>
