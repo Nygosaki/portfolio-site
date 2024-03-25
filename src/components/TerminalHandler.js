@@ -67,6 +67,9 @@ function TerminalHandler() {
               <a href='https://steamcommunity.com/profiles/76561198433226986'>
               <img src={require("../assets/icoSteam.png")} class='iconSocial' alt='Discord'/>
               </a>
+              <a href='mailto:nygosaki@nygosaki.dev'>
+              <img src={require("../assets/icoEmail.png")} class='iconSocial' alt='Email'/>
+              </a>
               </div>
               <p>---------------------------------------------------------------------------<br /></p>
               <div class='horizontalAlign'>
