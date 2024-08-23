@@ -43,7 +43,7 @@ function Terminal({ searchParams }) {
     });
       switch (sanitizedInput.split(' ')[0]) {
           case 'help':
-            setOutput(`<p class="helpTitle"><b>-General Commands Manual-</b></p><p>    help    - <i>See this list</i><br />commissions - <i>Print information about programming commissions</i><br />     ls     - <i>List information about files</i><br />    open    - <i>Concatenate and print (display) the content of files</i><br />  neofetch  - <i>Print a neofetch of the server</i><br />   credits  - <i>see who helped in the creation of this website</i><br />   legal    - <i>View regulatory documents</i><br /></p>`);
+            setOutput(`<p class="helpTitle"><b>-General Commands Manual-</b></p><p>    help    - <i>See this list</i><br />commissions - <i>Print information about programming commissions</i><br />     ls     - <i>List information about files</i><br />    open    - <i>Concatenate and print (display) the content of files</i><br />  neofetch  - <i>Print a neofetch of the server</i><br />   credits  - <i>see who helped in the creation of this website</i><br />   legal    - <i>View regulatory documents</i><br /></p><br /><p class="helpTitle"><b>-Notice Board-</b><br />To the person DDoSing my site:<br />Why? I have the money, its just annoying.<br />Awww is somebody scared of femboys and queer people? :3c</p>`);
             break;
           case 'credits':
             setOutput(`
