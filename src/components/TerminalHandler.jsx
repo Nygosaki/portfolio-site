@@ -4,6 +4,14 @@ import Terminal from './Terminal';
 import { useLocation } from 'react-router-dom';
 // import { useTerminalContext } from './TerminalContext';
 
+import pfp from '../assets/pfp.png';
+import icoGithub from '../assets/icoGithub.png';
+import icoDiscord from '../assets/icoDiscord.png';
+import icoLastfm from '../assets/icoLastfm.png';
+import icoTumblr from '../assets/icoTumblr.png';
+import icoSteam from '../assets/icoSteam.png';
+import icoEmail from '../assets/icoEmail.png';
+
 function TerminalHandler() {
     const [terminals, setTerminals] = useState([]);
     // const location = useLocation();
@@ -42,7 +50,7 @@ function TerminalHandler() {
           <div class='intro'>
             <p>---------------------------------------------------------------------------</p>
             <div class='horizontalAlign'>
-              <img src={require("../assets/pfp.png")} style={{width:"8vw", paddingLeft:"1vw"}} alt=''/>
+              <img src={pfp} style={{width:"8vw", paddingLeft:"1vw"}} alt=''/>
               <p style={{paddingLeft:"1vw"}}><strong>Hey there!</strong><br />
               My name's <strong>Nygosaki</strong> <span class="descriptor">(Any pronouns)</span><br />
               I am a programmer, also interested in<br />
@@ -53,22 +61,22 @@ function TerminalHandler() {
               </div>
               <div class='horizontalAlign'>
               <a href='https://github.com/Nygosaki'>
-              <img src={require("../assets/icoGithub.png")} class='iconSocial' style={{paddingLeft:"10vw"}} alt='Github'/>
+                <img src={icoGithub} className='iconSocial' style={{paddingLeft:"10vw"}} alt='Github'/>
               </a>
               <a href='https://discord.gg/sFzqJk9R7E'>
-              <img src={require("../assets/icoDiscord.png")} class='iconSocial' alt='Discord'/>
+                <img src={icoDiscord} className='iconSocial' alt='Discord'/>
               </a>
               <a href='https://www.last.fm/user/MeLikeFish'>
-              <img src={require("../assets/icoLastfm.png")} class='iconSocial' alt='Last.fm'/>
+                <img src={icoLastfm} className='iconSocial' alt='Last.fm'/>
               </a>
               <a href='https://www.tumblr.com/blog/melikefish'>
-              <img src={require("../assets/icoTumblr.png")} class='iconSocial' alt='Tumblr'/>
+                <img src={icoTumblr} className='iconSocial' alt='Tumblr'/>
               </a>
               <a href='https://steamcommunity.com/profiles/76561198433226986'>
-              <img src={require("../assets/icoSteam.png")} class='iconSocial' alt='Discord'/>
+                <img src={icoSteam} className='iconSocial' alt='Steam'/>
               </a>
               <a href='mailto:nygosaki@nygosaki.dev'>
-              <img src={require("../assets/icoEmail.png")} class='iconSocial' alt='Email'/>
+                <img src={icoEmail} className='iconSocial' alt='Email'/>
               </a>
               </div>
               <p>---------------------------------------------------------------------------<br /></p>

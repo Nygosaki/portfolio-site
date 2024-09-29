@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import classes from "../styling/LoginForm.module.scss";
 import "../styling/login.css"
+import pfp from '../assets/pfp.png';
 
 function LoginForm() {
   const emailInputRef = useRef();
@@ -107,7 +108,7 @@ function LoginForm() {
               <div className={classes.pfpColorAnimation}>
                 <div className={classes.pfpAnimationContainer}>
                 <div className={classes.circle}></div>
-                  <img src={require("../assets/pfp.png")} style={{width: "8vw", minWidth: "70px", position: "relative", zIndex: "1"}} alt=''>
+                  <img src={pfp} style={{width: "8vw", minWidth: "70px", position: "relative", zIndex: "1"}} alt=''>
                   </img>
                 </div>
               </div>
