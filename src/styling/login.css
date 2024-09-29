@@ -102,13 +102,3 @@ a:active {
   animation: 
     slide 2s ease-in-out 3s forwards;
 } */
-
-@keyframes fwd {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(100px); }
-}
-
-.enter.enterAnimate {
-  position: relative;
-  animation: fwd 2.5s ease-in 1;
-}

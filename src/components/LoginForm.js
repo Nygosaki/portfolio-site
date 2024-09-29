@@ -1,15 +1,27 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import classes from "../styling/LoginForm.module.scss";
-import usernameIcon from "../assets/akar-icons_person.svg";
-import passwordIcon from "../assets/carbon_password.svg";
 import "../styling/login.css"
 
 function LoginForm() {
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
   const inputContainerRef = useRef(null);
+
+  const [showPassword, setShowPassword] = useState(false);
+  const handleUserNameInput = () => {
+    if (emailInputRef.current.value.trim() !== "") {
+      setShowPassword(true);
+    }
+  };
+
+  const [showButton, setShowButton] = useState(false);
+  const handlePasswordInput = () => {
+    if (emailInputRef.current.value.trim() !== "") {
+      setShowButton(true);
+    }
+  };
 
   const navigate = useNavigate();
   const viewNavigate = (newRoute) => {
@@ -55,12 +67,12 @@ function LoginForm() {
       }[s];
   });
 
-    document.querySelector('.enter').classList.add('enterAnimate');
     console.log("Login attempt: ")
+    viewNavigate('/terminal?user=' + username + '&pass=' + password);
     
-    setTimeout(() => {
-      viewNavigate('/terminal?user=' + username + '&pass=' + password);
-    }, 1000);
+    // setTimeout(() => {
+    //   viewNavigate('/terminal?user=' + username + '&pass=' + password);
+    // }, 1000);
 
     // Construct the URL with the username and password
     // const redirectURL = `/terminal?user=${username}&pass=${password}`;
@@ -84,74 +96,49 @@ function LoginForm() {
     <div>
     <div class={classes.imageContainer}>
       <img src={require("../assets/pfp.png")} style={{width: "8vw", minWidth: "70px"}} alt=''/>
-      <svg class={classes.loader} viewBox="-10 -10 70 70">
-        <defs>
-          <filter id="glow" x="-100%" y="-100%" width="300%" height="300%">
-            <feDropShadow stdDeviation="1" floodColor="#3498db" dx="0" dy="0" floodOpacity="1"/>
-            <feDropShadow stdDeviation="1" floodColor="#3498db" dx="0" dy="0" floodOpacity="1"/>
-            <feDropShadow stdDeviation="2" floodColor="#3498db" dx="0" dy="0" floodOpacity="1"/>
-            <feDropShadow stdDeviation="3" floodColor="#3498db" dx="0" dy="0" floodOpacity="1"/>
-            <feDropShadow stdDeviation="5" floodColor="#3498db" dx="0" dy="0" floodOpacity="1"/>
-          </filter>
-        </defs>
-        <circle class={classes.path} cx="25" cy="25" r="20" fill="none" strokeWidth="1"></circle>
+      <svg class={classes.loader} width="8vw" height="8vh">
       </svg>
     </div>
-    <div class={classes.welcomeMain}><p>Welcome to: <span class={classes.welcomeText} /></p></div>
     <form onSubmit={submitHandler} class={classes.form}>
-      <div class={classes.inputContainer} ref={inputContainerRef}>
-        <div class={classes.centeredContent}>
+    <div class={classes.flexContainer}>
       <div>
-        <img
-          class={classes.icon}
-          src={usernameIcon}
-          alt="Username icon"
-          htmlFor="user-name"
-        ></img>
+    <div className={`${classes.centeredContent} ${showPassword ? classes.faded : classes.blinkingText}`} id="user">
+      <p class={classes.loginTxt}>{'>'}</p>
         <input
-          class={classes.input}
-          type="text"
-          id="user-name"
-          name="user-name"
-          autoComplete="on"
-          placeholder="Username"
-          ref={emailInputRef}
-          required={true}
-        ></input>
-      </div>
-
-      <div>
-        <img
-          class={classes.icon}
-          src={passwordIcon}
-          alt="Password icon"
-          htmlFor="user-password"
-        ></img>
+              type="text"
+              id="user-name"
+              name="user-name"
+              autoComplete="off"
+              placeholder="__"
+              ref={emailInputRef}
+              required={true}
+              onInput={handleUserNameInput}
+              ></input>
+        </div>
+      <div className={`${showPassword ? classes.slideBottom : classes.hidden}`} id="pass">
+        <div className={`${classes.centeredContent} ${showButton ? classes.faded : classes.blinkingText}`}>
+        <p class={classes.loginTxt}>{'>'} </p>
         <input
-          class={classes.input}
-          type="password"
-          id="user-password"
-          name="user-password"
-          autoComplete="off"
-          placeholder="Password"
-          ref={passwordInputRef}
-          required={true}
-        ></input>
+              type="password"
+              id="user-password"
+              name="user-password"
+              autoComplete="off"
+              placeholder="__"
+              ref={passwordInputRef}
+              required={true}
+              onInput={handlePasswordInput}
+              ></input>
+        </div>
       </div>
       </div>
-
-      <button
-        class={classes.loginBtn}
+        <button
+        className={`${classes.loginBtn} ${showButton ? classes.slideRight : classes.hidden}`}
         disabled={false}
       >
-      <div class="enter">{">"}</div>
-      </button>
-      </div>
-
-      {/* Add the hint text below the input container */}
-      <p class={classes.hintText}>Hint: Just try something :)</p>
+      <div className={`${showButton ? classes.blinkingText : ""}`}>{"->"}</div>
+      </button></div>
     </form>
-    <p class={classes.tipClass}>Pro tip: <span class={classes.tipText}></span></p>
+    <p class={classes.hintText}>Hint: You can use guest credentials :3</p>
     <div class={classes.legal}>
       <p onClick={legalHandler}><a href="#">Legal</a></p>
     </div>
