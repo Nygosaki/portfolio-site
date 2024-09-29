@@ -1,64 +1,387 @@
-@import "../styling/mixins";
-@import "../styling/variables";
-@import "../styling/extensions";
+  @import "../styling/mixins";
+  @import "../styling/extensions";
+  @import "../styling/typed";
+  
 
-.form {
-  display: flex;   // Change from display: grid to display: flex
-  flex-direction: column;
-  justify-content: center; // Center horizontally
-  align-items: center;    // Center vertically
-  // margin: $main-margin * 4;
-  width: 433px;
-  @include media-max-width() {
-    width: 95%;
+
+@-webkit-keyframes flicker-in-1 {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 0;
+  }
+  10.1% {
+    opacity: 1;
+  }
+  10.2% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 0;
+  }
+  20.1% {
+    opacity: 1;
+  }
+  20.6% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 0;
+  }
+  30.1% {
+    opacity: 1;
+  }
+  30.5% {
+    opacity: 1;
+  }
+  30.6% {
+    opacity: 0;
+  }
+  45% {
+    opacity: 0;
+  }
+  45.1% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  55% {
+    opacity: 1;
+  }
+  55.1% {
+    opacity: 0;
+  }
+  57% {
+    opacity: 0;
+  }
+  57.1% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 1;
+  }
+  60.1% {
+    opacity: 0;
+  }
+  65% {
+    opacity: 0;
+  }
+  65.1% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  75.1% {
+    opacity: 0;
+  }
+  77% {
+    opacity: 0;
+  }
+  77.1% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  85.1% {
+    opacity: 0;
+  }
+  86% {
+    opacity: 0;
+  }
+  86.1% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes flicker-in-1 {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 0;
+  }
+  10.1% {
+    opacity: 1;
+  }
+  10.2% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 0;
+  }
+  20.1% {
+    opacity: 1;
+  }
+  20.6% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 0;
+  }
+  30.1% {
+    opacity: 1;
+  }
+  30.5% {
+    opacity: 1;
+  }
+  30.6% {
+    opacity: 0;
+  }
+  45% {
+    opacity: 0;
+  }
+  45.1% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  55% {
+    opacity: 1;
+  }
+  55.1% {
+    opacity: 0;
+  }
+  57% {
+    opacity: 0;
+  }
+  57.1% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 1;
+  }
+  60.1% {
+    opacity: 0;
+  }
+  65% {
+    opacity: 0;
+  }
+  65.1% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  75.1% {
+    opacity: 0;
+  }
+  77% {
+    opacity: 0;
+  }
+  77.1% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  85.1% {
+    opacity: 0;
+  }
+  86% {
+    opacity: 0;
+  }
+  86.1% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
   }
 }
 
-input {
-  @include input-placeholder();
-  padding-left: 75px;
-}
 
-.input {
-  @extend .mainInputStyle;
-  border: 1px solid #fff;
-  margin-top: $main-margin * 2;
-  margin-right: 3px;
-  color: lightgray;
-  // flex: 1; // Add this property to make the input take up available space
-
-}
-.loginBtn {
-  @extend .mainInputStyle;
-  border: 1px solid $submit-color;
-  margin-top: $main-margin * 2;
-  font-size: x-large;
-  color: $submit-color;
-  min-width: 60px; /* Adjust the width to your desired size */
-  height: 54px; /* Adjust the height to your desired size */
-  cursor: pointer;
-  &:active {
-    opacity: 50%;
+ @-webkit-keyframes fade-in {
+  0% {
+    opacity: 0;
   }
-  &:hover {
-    filter: invert(50%);
+  100% {
+    opacity: 1;
   }
 }
-.icon {
-  position: absolute;
-  margin-top: $main-margin * 3;
-  margin-left: $main-margin * 2;
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
-/* Add styles for the input container */
-.inputContainer {
-  display: flex;
-  justify-content: space-between;
-}
 
-.hintText {
-  text-align: center; /* Center the hint text */
-  margin-top: 10px; /* Adjust the margin as needed */
-  color: #868686; /* Set the color of the hint text */
-  font-size: small;
-}
+  .form {
+    display: flex;   // Change from display: grid to display: flex
+    flex-direction: column;
+    // margin: $main-margin * 4;
+    // width: 600px;
+    opacity: 0;
+    @include media-max-width() {
+      width: 95%;
+    }
+    -webkit-animation: flicker-in-1 2s linear 2s forwards;
+            animation: flicker-in-1 2s linear 2s forwards;
+    
+  }
+
+  .centeredContent {  // New class for centering
+    display: flex;
+    flex-direction: row;
+    justify-content: center; // Center horizontally
+    align-items: center;    // Center vertically
+  }
+
+  input {
+    @include input-placeholder();
+    padding-left: 11vw;
+  }
+
+  .input {
+    @extend .mainInputStyle;
+    border: 1px solid #fff;
+    margin-top: 2.6vh;
+    margin-right: 0.4vw;
+    color: lightgray;
+    // flex: 1; // Add this property to make the input take up available space
+
+  }
+  .loginBtn {
+    // @extend .mainInputStyle;
+    // border: 1px solid #ffffff;
+    background: none;
+    min-width: 40px;
+    max-width: 150px;
+
+    border: none;
+    margin-top: 2.6vh;
+    font-size: x-large;
+    color: #ffffff;
+    width: 3.3vw; /* Adjust the width to your desired size */
+    height: 7vh; /* Adjust the height to your desired size */
+    cursor: pointer;
+    &:active {
+      opacity: 50%;
+    }
+    &:hover {
+      filter: invert(50%);
+    }
+  }
+  .icon {
+    width: 5.2vw;
+    height: 5vh;
+    position: absolute;
+    margin-top: 3.8vh;
+    margin-left: 3vw;
+  }
+
+  /* Add styles for the input container */
+  .inputContainer {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .hintText {
+    text-align: center; /* Center the hint text */
+    margin-top: 1vh; /* Adjust the margin as needed */
+    color: #868686; /* Set the color of the hint text */
+    font-size: small;
+  }
+
+  .legal {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding-right: 1vw;
+  }
+
+  .tipText {
+    font-size: small;
+    color: #bcbcbc;
+    @include typed("What are you still doing here?", "Just try like Guest and guest as the login details","Dramatic pause, annnddd<[15]> kaboom!", "What did I do to you?", "You know, I appreciate you coming", "Its been a while since I could love-rant to a rando", "Awwww, you just want headpats, is that right?", "Well,<[5]> let me tell you about my beutiful girlfriend", "Ashley :>", "She...<[15]> means a lot to me", "Basically the whole reason why I am still alive to be honest", "She's incredible,<[12]> like,<[12]> truly perfect", "Always listens to what I have to say", "Is very reasonable and understanding", "Always wants to improve for me", "And don't forget the fact that she is incredibly cute :>", "I would include some music here if I knew how to.<[15]>\ATo make it more mood-y, you know?", "Anyways,<[5]> thank you for coming to my love rant :>", "We dont really have a set date when we started dating,<[10]> do we", "So just have this instead :>", 
+    (type: .05), (caret-width: 2px, caret-space: 2px, iterations: 1, delay: 40, end-on: ("6/19/2023": (color: rgb(188, 0, 188)))));
+  }
+
+  .tipClass {
+    opacity: 0;
+    -webkit-animation: fade-in 5s ease-in-out 40s forwards;
+    animation: fade-in 5s ease-in-out 40s forwards;
+  }
+
+
+  .welcomeText {
+    font-size: 18px;
+    font-weight: 400;
+    @include typed((
+      "Nygosaki's Website": (color: rgb(188, 0, 188)), 
+      "Nygosaki's Portfolio": (color: rgb(96, 96, 253)),
+      "Nygosaki's Blog": (color: red),
+      "Nygosaki's Terminal": (color: cyan)
+    ), (type: .05, pause-typed: 4), (caret-width: 2px, caret-space: 2px, iterations: 1, end-styles: (caret: false))
+    );
+  }
+
+
+  .welcomeMain {
+    opacity: 0;
+      -webkit-animation: fade-in 2s ease-in-out 1s forwards;
+              animation: fade-in 2s ease-in-out 1s forwards;
+  }
+
+  .imageContainer {
+    position: relative;
+  }
+
+  .loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    animation: rotates 6s linear forwards; /* The animation will run 3 times and then stop */
+    width: 14vw; /* Make the SVG larger than the image */
+    min-width: 120px;
+  }
+
+  .path {
+    stroke: #3498db;
+    stroke-linecap: round;
+    animation: dash 1.5s ease-in-out infinite;
+    stroke-width: 1px; /* Make the moving part thinner */
+    fill: transparent;
+    filter: url(#glow); /* Apply the neon effect */
+  }
+  
+  @keyframes rotates {
+    0% {
+      transform: rotate(0turn);
+      opacity: 1; /* The SVG is visible during the animation */
+    }
+    80% {
+      transform: rotate(3turn);
+      opacity: 1; /* The SVG is visible during the animation */
+    }
+    100% {
+      transform: rotate(3turn);
+      opacity: 0; /* The SVG is hidden after the animation ends */
+    }
+  }
+  
+  @keyframes dash {
+    0% {
+      stroke-dasharray: 1, 150;
+      stroke-dashoffset: 0;
+    }
+    50% {
+      stroke-dasharray: 90, 150;
+      stroke-dashoffset: -35;
+    }
+    100% {
+      stroke-dasharray: 90, 150;
+      stroke-dashoffset: -124;
+    }
+  }
