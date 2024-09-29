@@ -7,7 +7,6 @@ import "../styling/login.css"
 function LoginForm() {
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
-  const inputContainerRef = useRef(null);
 
   const [showPassword, setShowPassword] = useState(false);
   const handleUserNameInput = () => {
@@ -155,7 +154,7 @@ function LoginForm() {
     </form>
     <p class={classes.hintText}>Hint: You can use guest credentials :3</p>
     <div class={classes.legal}>
-      <p onClick={legalHandler}><a href="#">Legal</a></p>
+      <p onClick={legalHandler}><a href="#!">Legal</a></p>
     </div>
     </div>
   );
