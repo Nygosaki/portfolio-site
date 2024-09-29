@@ -1,6 +1,7 @@
 import { resolve } from "node:path";
 import { readFileSync } from "node:fs";
 import { defineConfig, loadEnv, createFilter, transformWithEsbuild } from "vite";
+import sass from 'sass';
 import react from "@vitejs/plugin-react";
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
@@ -17,6 +18,14 @@ export default defineConfig(({ mode }) => {
             htmlPlugin(mode),
             svgrPlugin(),
         ],
+        css: {
+            preprocessorOptions: {
+              scss: {
+                implementation: sass,
+                api: 'modern'
+              },
+            },
+          },
     };
 });
 function setEnv(mode) {
@@ -138,6 +147,7 @@ function importPrefixPlugin() {
         },
     };
 }
+
 // In Create React App, SVGs can be imported directly as React components. This is achieved by svgr libraries.
 // https://create-react-app.dev/docs/adding-images-fonts-and-files/#adding-svgs
 function svgrPlugin() {
