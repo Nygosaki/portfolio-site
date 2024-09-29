@@ -40,6 +40,7 @@
   display: flex;
   align-items: center;
   flex-direction: row;
+  z-index: 0;
 }
 
 input {
@@ -53,15 +54,15 @@ input {
 }
 
 ::-webkit-input-placeholder {
-  color:red !important;
+  color:rgb(77, 77, 77) !important;
 }
 
 ::-moz-placeholder {
-  color:red !important;
+  color:rgb(77, 77, 77) !important;
 }
 
 ::-ms-placeholder {
-  color:red !important;
+  color:rgb(77, 77, 77) !important;
 }
 
 ::placeholder {
@@ -116,17 +117,7 @@ input {
 
 .imageContainer {
   position: relative;
-}
-
-.loader {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  width: 14vw; /* Make the SVG larger than the image */
-  min-width: 120px;
+  z-index: 1;
 }
 
 @keyframes blink {
@@ -196,5 +187,248 @@ input {
     -webkit-transform: translateY(0px);
             transform: translateY(0px);
     opacity: 1;
+  }
+}
+
+
+
+.pfpAnimationContainer {
+  position: relative;
+}
+
+.pfpAnimationContainer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(30, 30, 30); /* Optional: Add a semi-transparent background */
+  filter: blur(1vw); /* Increased the blur radius */
+  pointer-events: none; /* Ensure the blur effect doesn't interfere with user interactions */
+}
+
+.pfpAnimation {
+  position: relative;
+  // z-index: 1; /* Ensure the animated element is above the blur effect */
+  -webkit-animation: slide-top 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 6s both;
+  animation: slide-top 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 6s both;
+}
+
+.pfpColorAnimation::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(30, 30, 189, 0.427); /* Optional: Add a semi-transparent background */
+  filter: blur(20px); /* Increased the blur radius */
+  z-index: 1;
+  pointer-events: none; /* Ensure the blur effect doesn't interfere with user interactions */
+  -webkit-animation: pfpColor 6s cubic-bezier(0.550, 0.085, 0.680, 0.530) 1s both;;
+  animation: pfpColor 6s cubic-bezier(0.550, 0.085, 0.680, 0.530) 1s both;
+}
+
+@-webkit-keyframes slide-top {
+  0% {
+    -webkit-transform: translateY(7vh) scale(1.5);
+            transform: translateY(7vh) scale(1.5);
+  }
+  100% {
+    -webkit-transform: translateY(0) scale(1);
+            transform: translateY(0) scale(1);
+  }
+}
+@keyframes slide-top {
+  0% {
+    -webkit-transform: translateY(7vh) scale(1.5);
+            transform: translateY(7vh) scale(1.5);
+  }
+  100% {
+    -webkit-transform: translateY(0) scale(1);
+            transform: translateY(0) scale(1);
+  }
+}
+
+
+@-webkit-keyframes pfpColor {
+  0% {
+    -webkit-filter: blur(40px);
+            filter: blur(40px);
+  }
+  50% {
+    -webkit-filter: blur(70px);
+            filter: blur(70px);
+  }
+  100% {
+    -webkit-filter: blur(150px);
+            filter: blur(150px);
+  }
+}
+
+@keyframes pfpColor {
+  0% {
+    -webkit-filter: blur(40px);
+            filter: blur(40px);
+  }
+  50% {
+    -webkit-filter: blur(70px);
+            filter: blur(70px);
+  }
+  100% {
+    -webkit-filter: blur(150px);
+            filter: blur(150px);
+  }
+}
+
+
+
+
+.circle {
+  width: 8vw;
+  min-width: 70px;
+  height: 8vw;
+  min-height: 70px;
+  background-color: transparent; /* Make the background transparent */
+  border: 2px solid transparent; /* Add a border with your desired color and thickness */
+  border-radius: 50%;
+  position: absolute; /* Position relative to contain the pseudo-element */
+  right: 0;
+  left: 0;
+  bottom: 0;
+  margin: auto; 
+  margin-bottom: 0.14vh;
+  z-index: 5;
+  pointer-events: none;
+
+  filter: drop-shadow(0 0 10px #f0beed) drop-shadow(0 0 20px #f0beed) drop-shadow(0 0 30px #f0beed);
+}
+
+.circle::before {
+  content: '';
+  box-sizing: border-box;
+  min-width: 70px;
+  height: 8vw;
+  width: 8vw;
+  min-height: 70px;
+  border-top: 2px solid #f0beed; /* Neon red color */
+  border-left: 2px solid transparent;
+  border-right: 2px solid transparent;
+  background-color: transparent;
+  border-radius: 50%;
+  position: absolute;
+  top: 0%; /* Position it on top of the circle's border */
+  left: 0%; /* Align it with the left edge of the circle's border */
+  clip-path: inset(0 50% 0 0); /* Clip the left half */
+  -webkit-animation: rotateleft 6s ease-in-out both;
+  animation: rotateleft 6s ease-in-out both;
+  rotate: 180deg;
+  filter: drop-shadow(0 0 0px #f0beed) drop-shadow(0 0 1px #f0beed); /* Enhanced glow effect */
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.circle::after {
+  content: '';
+  box-sizing: border-box;
+  min-width: 70px;
+  width: 8vw;
+  height: 8vw;
+  min-height: 70px;
+  border-top: 2px solid #f0beed; /* Neon blue color */
+  border-left: 2px solid transparent;
+  border-right: 2px solid transparent;
+  background-color: transparent;
+  border-radius: 50%;
+  position: absolute;
+  top: 0%; /* Position it on top of the circle's border */
+  left: 0%; /* Align it with the left edge of the circle's border */
+  clip-path: inset(0 0 0 50%); /* Clip the left half */
+  -webkit-animation: rotateright 6s ease-in-out both;
+  animation: rotateright 6s ease-in-out both;
+  rotate: 180deg;
+  filter: drop-shadow(0 0 0px #f0beed) drop-shadow(0 0 1px #f0beed); /* Enhanced glow effect */
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+@keyframes rotateleft {
+  0% {
+    transform: rotate(-50deg);
+  }
+  25% {
+    transform: rotate(90deg);
+  }
+  50% {
+    transform: rotate(-50deg);
+  }
+  75% {
+    transform: rotate(90deg);
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(-170deg);
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes rotateleft {
+  0% {
+    -webkit-transform: rotate(-50deg);
+  }
+  25% {
+    -webkit-transform: rotate(90deg);
+  }
+  50% {
+    -webkit-transform: rotate(-50deg);
+  }
+  75% {
+    -webkit-transform: rotate(90deg);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: rotate(-170deg);
+    opacity: 0;
+  }
+}
+
+@keyframes rotateright {
+  0% {
+    transform: rotate(50deg);
+  }
+  25% {
+    transform: rotate(-90deg);
+  }
+  50% {
+    transform: rotate(50deg);
+  }
+  75% {
+    transform: rotate(-90deg);
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(170deg);
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes rotateright {
+  0% {
+    -webkit-transform: rotate(50deg);
+  }
+  25% {
+    -webkit-transform: rotate(-90deg);
+  }
+  50% {
+    -webkit-transform: rotate(50deg);
+  }
+  75% {
+    -webkit-transform: rotate(-90deg);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: rotate(170deg);
+    opacity: 0;
   }
 }

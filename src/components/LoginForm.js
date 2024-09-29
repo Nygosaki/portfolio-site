@@ -91,14 +91,29 @@ function LoginForm() {
     // Redirect the user to the constructed URL
     // window.location.href = redirectURL;
   };
+
+  // useEffect(() => {
+  //   emailInputRef.current.focus();
+  // }, []);
+  useEffect(() => {
+      setTimeout(() => {
+      emailInputRef.current.focus();
+    }, 7000);
+    }, []);
   
   return (
-    <div>
-    <div class={classes.imageContainer}>
-      <img src={require("../assets/pfp.png")} style={{width: "8vw", minWidth: "70px"}} alt=''/>
-      <svg class={classes.loader} width="8vw" height="8vh">
-      </svg>
-    </div>
+        <div>
+          <div className={classes.imageContainer}>
+            <div className={classes.pfpAnimation}>
+              <div className={classes.pfpColorAnimation}>
+                <div className={classes.pfpAnimationContainer}>
+                <div className={classes.circle}></div>
+                  <img src={require("../assets/pfp.png")} style={{width: "8vw", minWidth: "70px", position: "relative", zIndex: "1"}} alt=''>
+                  </img>
+                </div>
+              </div>
+            </div>
+          </div>
     <form onSubmit={submitHandler} class={classes.form}>
     <div class={classes.flexContainer}>
       <div>

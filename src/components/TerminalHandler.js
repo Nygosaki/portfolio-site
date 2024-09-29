@@ -45,7 +45,7 @@ function TerminalHandler() {
               <img src={require("../assets/pfp.png")} style={{width:"8vw", paddingLeft:"1vw"}} alt=''/>
               <p style={{paddingLeft:"1vw"}}><strong>Hey there!</strong><br />
               My name's <strong>Nygosaki</strong> <span class="descriptor">(Any pronouns)</span><br />
-              I am a programmer, also interasted in<br />
+              I am a programmer, also interested in<br />
               general IT, cybersecurity and pentesting.<br />
               Currently focusing on bots and other 'malicious' programs.<br />
               Commissions are open btw :3<br />
