@@ -65,9 +65,9 @@ body {
 
   img.iconSocial {
     min-width: 15px;
-    width: 3vw;
-    padding-left: 2vw;
-    padding-top: 2vh;
+    width: 2em;
+    padding-left: 1vw;
+    padding-top: 0.5vw;
   }
 
   img.credits {
