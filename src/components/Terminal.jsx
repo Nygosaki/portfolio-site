@@ -363,7 +363,7 @@ function Terminal({ searchParams }) {
 
     return (
         <div class="terminal">
-            <label for="commandinput">{user}@Server2 ~</label>
+            <label for="commandinput" style={{color:'#9b87f5'}}>{user}@Server2 ~</label>
             <input
                 type="text"
                 aria-label="Command Input"

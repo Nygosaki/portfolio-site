@@ -203,7 +203,7 @@ input {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgb(30, 30, 30); /* Optional: Add a semi-transparent background */
+  background: #1A1F2C; /* Optional: Add a semi-transparent background */
   filter: blur(1vw); /* Increased the blur radius */
   pointer-events: none; /* Ensure the blur effect doesn't interfere with user interactions */
 }
@@ -222,7 +222,7 @@ input {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(30, 30, 189, 0.427); /* Optional: Add a semi-transparent background */
+  background: #1A1F2C; /* Optional: Add a semi-transparent background */
   filter: blur(20px); /* Increased the blur radius */
   z-index: 1;
   pointer-events: none; /* Ensure the blur effect doesn't interfere with user interactions */
