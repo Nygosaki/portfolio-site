@@ -78,7 +78,7 @@ input {
   padding-top: 5.5vh;
 
   border: none;
-  font-family: monospace;
+    font-family: 'JetBrains Mono', monospace;
   font-size: x-large;
   color: #ffffff;
   width: 3.3vw; /* Adjust the width to your desired size */
@@ -131,6 +131,7 @@ input {
 
 .blinkingText {
   animation: blink 1s infinite;
+  font-family: monospace;
 }
 
 .faded {
