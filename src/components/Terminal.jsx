@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { useTerminalContext } from './TerminalContext';
+import { useTerminalContext } from '@src/components/TerminalContext';
 
 function Terminal({ searchParams }) {
     const [input, setInput] = useState('');
     const [output, setOutput] = useState("");
+    const [cursorVisible, setCursorVisible] = useState(true);
     const { history, setHistory, historyIndex, setHistoryIndex } = useTerminalContext();
     const [user, setUser] = useState(searchParams.get("user").replace(/[&<>"'`/$=\\]/g, function(s) {
       return {
@@ -21,6 +22,7 @@ function Terminal({ searchParams }) {
   }));
     // onst [history, setHistory] = useState([]);
     // const [historyIndex, setHistoryIndex] = useState(0);
+
   
     //TODO add file system
     const handleCommand = (inputCommand) => {
@@ -374,12 +376,21 @@ function Terminal({ searchParams }) {
                 onChange={(e) => setInput(e.target.value)}
                 autoFocus={true}
                 onKeyDown={(e) => {
+                  setTimeout(() => {
+                    const inputs = document.querySelectorAll('.terminal input');
+                    const inputNewestIndex = inputs.length - 1;
+                    const inputNewest = inputs.item(inputNewestIndex);
+                    if (inputNewest) {
+                      inputNewest.setSelectionRange(inputNewest.value.length, inputNewest.value.length);
+                    }
+                  }, 50);
                     if (e.key === 'Enter') {
                         handleCommand(input);
                         const inputs = document.querySelectorAll('.terminal input');
                         const inputNewestIndex = inputs.length - 1
                         const inputNewest = inputs.item(inputNewestIndex)
                         inputNewest.disabled = true;
+                        setCursorVisible(false);
                     } else if (e.key === 'ArrowUp') {
                       console.log("Arrow Up")
                         // Make sure that the history index is within the bounds of the history list
@@ -403,8 +414,9 @@ function Terminal({ searchParams }) {
                       }                }}
                   
             />
-          <span class="terminal-cursor">$ </span>
+          <span>$ </span>
           {input}
+          {cursorVisible && <span className='terminal-cursor'>▊</span>}
           <div class='outputClass' dangerouslySetInnerHTML={{__html: output}}></div>
         </div>
     );

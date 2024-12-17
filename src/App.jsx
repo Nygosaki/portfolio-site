@@ -1,13 +1,13 @@
 import React from 'react';
-import TerminalHandler from './components/TerminalHandler';
-import Login from './components/Login';
-import Legal from './components/Legal';
-import Cookie from './components/CookiePolicy';
-import Privacy from './components/PrivacyPolicy';
-import TOS from './components/TermsOfService';
-import CopyrightLicense from './components/Copyright';
+import TerminalHandler from '@src/components/TerminalHandler';
+import Login from '@src/components/Login';
+import Legal from '@src/components/Legal';
+import Cookie from '@src/components/CookiePolicy';
+import Privacy from '@src/components/PrivacyPolicy';
+import TOS from '@src/components/TermsOfService';
+import CopyrightLicense from '@src/components/Copyright';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { TerminalProvider } from './components/TerminalContext';
+import { TerminalProvider } from '@src/components/TerminalContext';
 import packageInfo from '../package.json';
 import CacheBuster from 'react-cache-buster';
 

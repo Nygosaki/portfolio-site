@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import '../styling/terminal.css';
-import Terminal from './Terminal';
+import '@styling/terminal.css';
+import Terminal from '@src/components/Terminal';
 import { useLocation } from 'react-router-dom';
 // import { useTerminalContext } from './TerminalContext';
 
-import pfp from '../assets/pfp.png';
-import icoGithub from '../assets/icoGithub.png';
-import icoDiscord from '../assets/icoDiscord.png';
-import icoLastfm from '../assets/icoLastfm.png';
-import icoTumblr from '../assets/icoTumblr.png';
-import icoSteam from '../assets/icoSteam.png';
-import icoEmail from '../assets/icoEmail.png';
+import pfp from '@assets/pfp.png';
+import icoGithub from '@assets/icoGithub.png';
+import icoDiscord from '@assets/icoDiscord.png';
+import icoLastfm from '@assets/icoLastfm.png';
+import icoTumblr from '@assets/icoTumblr.png';
+import icoSteam from '@assets/icoSteam.png';
+import icoEmail from '@assets/icoEmail.png';
 
 function TerminalHandler() {
     const [terminals, setTerminals] = useState([]);

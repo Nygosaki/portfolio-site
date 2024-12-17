@@ -1,5 +1,7 @@
-import Layout from "./Layout";
-import LoginForm from "./LoginForm";
+import Layout from "@src/components/Layout";
+import LoginForm from "@src/components/LoginForm";
+import "@styling/login.css"
+
 
 function Login() {
   return (

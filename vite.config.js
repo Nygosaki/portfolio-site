@@ -26,6 +26,13 @@ export default defineConfig(({ mode }) => {
               },
             },
           },
+        resolve: {
+            alias: {
+                '@styling': resolve(__dirname, 'src/styling'),
+                '@assets': resolve(__dirname, 'src/assets'),
+                '@src': resolve(__dirname, 'src'),
+            },
+        },
     };
 });
 function setEnv(mode) {

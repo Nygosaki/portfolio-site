@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styling/terminal.css';
+import '@styling/terminal.css';
 
 function TOS(){
     return (

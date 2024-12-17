@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import classes from "../styling/LoginForm.module.scss";
-import "../styling/login.css"
-import pfp from '../assets/pfp.png';
+import classes from "@styling/LoginForm.module.scss";
+import "@styling/login.css"
+import pfp from '@assets/pfp.png';
 
 function LoginForm() {
   const emailInputRef = useRef();
