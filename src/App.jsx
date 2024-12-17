@@ -20,7 +20,7 @@ function App() {
     isVerboseMode={false} //If true, the library writes verbose logs to console.
   >
     <div>
-      <BrowserRouter>
+      <BrowserRouter basename="/">
         <Routes>
           <Route index element={<Login />} />
           <Route exact path="/terminal" element={<TerminalProvider><TerminalHandler /></TerminalProvider>} />
