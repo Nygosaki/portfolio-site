@@ -114,6 +114,16 @@ input {
   padding-right: 1vw;
 }
 
+.blurContainer {
+  content: '';
+  position: absolute;
+  width: 18.5vw;
+  height: 20vh;
+  background: #1A1F2C; /* Optional: Add a semi-transparent background */
+  filter: blur(2vw); /* Increased the blur radius */
+  pointer-events: none; /* Ensure the blur effect doesn't interfere with user interactions */
+}
+
 
 .imageContainer {
   position: relative;

@@ -103,6 +103,7 @@ function LoginForm() {
   
   return (
         <div>
+          <div className={classes.blurContainer}></div>
           <div className={classes.imageContainer}>
             <div className={classes.pfpAnimation}>
               <div className={classes.pfpColorAnimation}>
