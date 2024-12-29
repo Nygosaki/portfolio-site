@@ -112,11 +112,13 @@ function skyline() {
       
         Skyline.prototype.update = function() {
           var firstBuilding, lastBuilding, newHeight, newWidth;
-          this.x -= (canvas.mouseX * this.speed) * dt;
+          this.buildings.forEach(building => {
+            building.x -= (canvas.mouseX * this.speed) * dt;
+          });
           firstBuilding = this.buildings[0];
-          if (firstBuilding.width + firstBuilding.x + this.x < 0) {
-            newWidth = Math.round(Math.random() * (this.width.min - this.width.max) + this.width.min);
-            newHeight = Math.round(Math.random() * (this.height.min - this.height.max) + this.height.min);
+          if (firstBuilding.width + firstBuilding.x < 0) {
+            newWidth = Math.round(Math.random() * (this.width.max - this.width.min) + this.width.min);
+            newHeight = Math.round(Math.random() * (this.height.max - this.height.min) + this.height.min);
             lastBuilding = this.buildings[this.buildings.length - 1];
             firstBuilding.reset({
               layer: this.layer,
@@ -126,7 +128,7 @@ function skyline() {
               height: newHeight,
               color: this.color
             });
-            return this.buildings.push(this.buildings.shift());
+            this.buildings.push(this.buildings.shift());
           }
         };
       
