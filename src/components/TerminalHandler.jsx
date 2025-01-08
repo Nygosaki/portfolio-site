@@ -15,6 +15,7 @@ import icoEmail from '@assets/icoEmail.png';
 function TerminalHandler() {
     const [terminals, setTerminals] = useState([]);
     const [lastTrackDetails, setLastTrackDetails] = useState(null);
+    const [path, setPath] = useState('~');
     // const location = useLocation();
     // const { history, setHistory, historyIndex, setHistoryIndex } = useTerminalContext();
 
@@ -29,7 +30,7 @@ function TerminalHandler() {
     document.addEventListener('click', focus);
   
     const addTerminal = () => {
-      setTerminals([...terminals, <Terminal key={terminals.length} searchParams={searchParams} />]);
+      setTerminals([...terminals, <Terminal key={terminals.length} searchParams={searchParams} path={path} setPath={setPath} />]);
     };
     document.addEventListener('spawnTerminalLine', addTerminal);
 

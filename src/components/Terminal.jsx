@@ -1,11 +1,73 @@
-import React, { useState } from 'react';
+import React, { useRef, useState, useReducer } from 'react';
 import { useTerminalContext } from '@src/components/TerminalContext';
+import { type } from '@testing-library/user-event/dist/cjs/utility/type.js';
 
-function Terminal({ searchParams }) {
+function Terminal({ searchParams, path, setPath }) {
     const [input, setInput] = useState('');
     const [output, setOutput] = useState("");
     const [cursorVisible, setCursorVisible] = useState(true);
     const { history, setHistory, historyIndex, setHistoryIndex } = useTerminalContext();
+    const pathStat = useRef(path);
+    var paths = [{
+      name: '~',
+      type: 'dir',
+      hidden: false,
+      items: [
+      {
+        name: 'about',
+        type: 'dir',
+        hidden: false,
+        items: [{
+          name: 'projects',
+          type: 'dir',
+          hidden: false,
+          items: []
+        },{
+          name: 'commissions.md',
+          type: 'markdown',
+          hidden: false,
+          items: "<p>If you want to comission some app (or most likely botting tools), my rates are $10 per hour of work. <a href=https://discord.gg/sFzqJk9R7E>Contact me on Discord</a> for further details.</p>"
+        }]
+      },
+      {
+        name: 'othercoolstuff',
+        type: 'dir',
+        hidden: false,
+        items: []
+      },
+      {
+        name: 'importantstuff',
+        type: 'dir',
+        hidden: false,
+        items: [{
+          name: 'legal.md',
+          type: 'markdown',
+          hidden: false,
+          items: "<p><a href='/legal'>Legal Homepage</a></p><p><a href='/legal/cookies'>CookiePolicy</a></p><p><a href='/legal/privacy'>PrivacyPolicy</a></p><p><a href='/legal/tos'>TermsOfService</a></p><p><a href='/legal/copyright'>Copyright</a></p>"
+        }, 
+      {
+        name: 'creditsAsh.md',
+        type: 'markdown',
+        hidden: false,
+        items: `            <div class="horizontalAlign">
+              <img src="ashley.jpeg" class='credits'/>
+              <p>Thanks to:<br />My beautiful girlfriend, <a href=https://github.com/Ash-does-stuff>Ash-does-stuff</a><br />For helping with some css,<br />teaching me a lot of JS,<br />and coming up with good suggestions :></p>
+            </div>`
+      }, 
+      {
+        name: 'creditsOther.md',
+        type: 'markdown',
+        hidden: false,
+        items: '<p>I would also further like to thank the following people:<br />   - Jack Rugile for creating the Canvas Parallax Skyline for sketch.js which I adapted to work with vanilla js canvases.'},
+      ]},
+      {
+        name: 'randomstuff',
+        type: 'dir',
+        hidden: true,
+        items: []
+      }]
+    }]
+    
     const [user, setUser] = useState(searchParams.get("user").replace(/[&<>"'`/$=\\]/g, function(s) {
       return {
           '&': '',
@@ -20,16 +82,14 @@ function Terminal({ searchParams }) {
           '\\': ''
       }[s];
   }));
-    // onst [history, setHistory] = useState([]);
-    // const [historyIndex, setHistoryIndex] = useState(0);
 
   
-    //TODO add file system
+    //TODO add file system, fancy logout, move comissions, credits, legal to directory
     const handleCommand = (inputCommand) => {
       setHistory([...history, inputCommand]);
       setHistoryIndex(history.length + 1);
       console.log(history)
-      let sanitizedInput = inputCommand.replace(/[&<>"'`/$=\\]/g, function(s) {
+      let sanitizedInput = inputCommand.replace(/[&<>"'`$=\\]/g, function(s) {
         return {
             '&': '',
             '<': '',
@@ -37,7 +97,6 @@ function Terminal({ searchParams }) {
             '"': '',
             "'": '',
             '`': '',
-            '/': '',
             '$': '',
             '=': '',
             '\\': ''
@@ -50,7 +109,7 @@ function Terminal({ searchParams }) {
                 setOutput('<p><b>NAME</b><br />      <b>blahaj</b> - Gay sharks at your local terminal<br /><br /><b>SYNOPSIS</b><br />      <b>blahaj</b> [color]<br /><br /><b>DESCRIPTION</b><br />      Apart from a cute cuddly shark plushie from IKEA, BLÅHAJ is a lolcat-like CLI tool that colorizes your input, shows flags and prints colorful sharks! <br />      It has a wide variety of flags/colors to choose from and many options.<br /><br />      The following color options are available:<br /><br />      trans        - light blue, pink, white, pink, light blue<br />      abrosexual   - green, mint, white, pink, red pink<br />      agender      - black, grey, white, light green, white, grey, black<br />      ambiamorous  - blue, blue, dark blue, dark purple, black, black, dark red, red, light red, light red<br />      aroace       - orange, yellow, white, light blue, dark blue<br />      gay          - dark green, light green, mint, white, light blue, purple, dark purple<br />      ace          - black, grey, white, purple<br />      aro          - green, light green, white, grey, black<br />      bi           - pink, pink, purple, blue, blue<br />      genderfluid  - pink, white, purple, black, blue<br />      genderqueer  - purple, white, green<br />      nb           - yellow, white, purple, black<br />      omnisexual   - pink, dark pink, black, dark blue, light purple<br />      bigender     - pink, light pink, light purple, white, light purple, light blue, dark blue<br />      pansexual    - pink, yellow, blue<br />      pangender    - yellow, light pink, light pink, white, light pink, light pink, yellow<br />      pride        - red, orange, yellow, green, blue, purple<br />      philadelphia - black, brown, red, orange, yellow, green, blue, purple<br />      plural       - dark purple, light purple, blue, green, cream<br />      polysexual   - pink, green, blue<br />      progress     - white, pink, light blue, brown, black, red, orange, yellow, green, blue, purple<br />      lesbian      - red, orange, peach, white, pink, dark pink, dark red<br />      queer        - black, light blue, blue, green, white, yellow, red, pink, black<br />      demigender   - grey, light grey, yellow, white, yellow, light grey, grey<br />      demiboy      - grey, light grey, light blue, white, light blue, light grey, grey<br />      demigirl     - grey, light grey, pink, white, pink, light grey, grey<br />      bear         - dark brown, orange, yellow, cream, white, grey<br />      xenogender   - pink, light pink, orange, yellow, light blue, purple, dark purple<br />      femboy       - pink, light pink, white, light blue, white, light pink, pink<br />      genderfae    - green, mint, light yellow, white, pink, purple, dark purple<br />      graysexual   - dark purple, grey, white, grey, dark purple</p>')
                 break;
               default:
-                setOutput(`<p class="helpTitle"><b>-General Commands Manual-</b></p><p>    help    - <i>See this list</i><br />commissions - <i>Print information about programming commissions</i><br />     ls     - <i>List information about files</i><br />    open    - <i>Concatenate and print (display) the content of files</i><br />  neofetch  - <i>Print a neofetch of the server</i><br />   blahaj   - <i>Print a blahaj with the appropriate colours. Run 'help blahaj' for syntax info</i><br />   credits  - <i>see who helped in the creation of this website</i><br />   legal    - <i>View regulatory documents</i><br /></p><br /><p class="helpTitle"><b>-Notice Board-</b><br />To the person DDoSing my site:<br />Why? I have the money, its just annoying.<br />Awww is somebody scared of femboys and queer people? :3c</p>`);
+                setOutput(`<p class="helpTitle"><b>-General Commands Manual-</b></p><p>    help    - <i>See this list or append before a command to see it's man page (if one is available)</i><br />     ls     - <i>List items present in the current directory</i><br />    open    - <i>Concatenate and print (display) the content of files</i><br />     cd     - <i>Change directory to target folder</i><br />  neofetch  - <i>Print a neofetch of the server</i><br />   blahaj   - <i>Print a blahaj with the appropriate colours. Run 'help blahaj' for syntax info</i><br />   credits  - <i>see who helped in the creation of this website</i><br /></p><br /><p class="helpTitle"><b>-Notice Board-</b><br />To the person DDoSing my site:<br />Why? I have the computing power, its just annoying.<br />Awww is somebody scared of queer femboys and the like? :3c</p>`);
             }
             break;
           case 'credits':
@@ -62,15 +121,9 @@ function Terminal({ searchParams }) {
             `);   
             document.title = "Love you Ashley<3";       
             break;
-          case 'commissions':
-              setOutput("<p>If you want to comission some app (or most likely botting tools), my rates are $10 per hour of work. <a href=https://discord.gg/sFzqJk9R7E>Contact me on Discord</a> for further details.</p>");
-              break;
           case 'neofetch':
             setOutput('<p>       _,met$$$$$gg.</p><p>    ,g$$$$$$$$$$$$$$$P.</p><p>  ,g$$P"     """Y$$.".</p><p> ,$$P\'              `$$$.</p><p>\',$$P       ,ggs.     `$$b:   <span class="neofetchtext">' + user + '</span>@<span class="neofetchtext">Server2</span></p><p>`d$$\'     ,$P"\'   <span class="neofetchtext">.</span>    $$$    --------------------------------</p><p> $$P      d$\'     <span class="neofetchtext">,</span>    $$P    <span class="neofetchtext">OS</span>: Debian GNU/Linux 11 (bullseye) x86_64</p><p> $$:      $$.   <span class="neofetchtext">-</span>    ,d$$\'    <span class="neofetchtext">Host</span>: Google Compute Engine</p><p> $$;      Y$b._   _,d$P\'      <span class="neofetchtext">Kernel</span>: 6.1.42+</p><p> Y$$.    <span class="neofetchtext">`.</span>`"Y$$$$P"\'         <span class="neofetchtext">Uptime</span>: 1+ years</p><p> `$$b      <span class="neofetchtext">"-.__</span>              <span class="neofetchtext">Packages</span>: 733 (dpkg)</p><p>  `Y$$                        <span class="neofetchtext">Shell</span>: bash 5.1.4</p><p>   `Y$$.                      <span class="neofetchtext">Terminal</span>: /dev/pts/1</p><p>     `$$b.                    <span class="neofetchtext">CPU</span>: Intel Xeon (4) @ 2.199GHz</p><p>       `Y$$b.                 <span class="neofetchtext">Memory</span>: ' + (Math.floor(Math.random() * (16002 - 300 + 1)) + 300) + 'MiB / 16002MiB</p><p>          `"Y$b._</p><p>              `"""                                    </p><p>                                                      </p>');
             document.title = "Oh Bread!"
-            break;
-          case 'legal':
-            setOutput(`<p><a href='/legal/cookies'>CookiePolicy</a></p><p><a href='/legal/privacy'>PrivacyPolicy</a></p><p><a href='/legal/tos'>TermsOfService</a></p><p><a href='/legal/copyright'>Copyright</a></p>`);       
             break;
           case 'blahaj':
             let c1
@@ -319,53 +372,85 @@ function Terminal({ searchParams }) {
               }, 100);
               break;
             case 'ls':
-                if (sanitizedInput.split(' ')[1] === '-a') {
-                    setOutput('<p>ashley.jpeg<br />anthony.jpg<br />coupleArt.jpg<br />coupleArt2.jpg<br />coupleArt3.png<br />favicon.ico<br />favicon2.ico<br />index.html<br />logo192.png<br />logo512.gif<br />logo512.png<br />manifest.json<br />robots.txt<br />sitemap.xml<br /></p>');
-                } else {
-                  setOutput('<p>anthony.jpg<br /></p>');
+              const startPath = path;
+              const pathParts = startPath.split('/');
+              let currentPath = paths;
+              for (let part of pathParts) {
+                if (part === '') continue;
+                const found = currentPath.find(item => item.name === part && item.type === 'dir');
+                if (found) {
+                currentPath = found.items;
                 }
+              }
+              let output = "<p>"
+              for (let item of currentPath) {
+                if (item.hidden) continue;
+                output += item.name + '<br />';
+              }
+              output += "</p>"
+              setOutput(output);
                 break;
             case 'open':
-              switch (sanitizedInput.split(' ')[1].split('.')[1]) {
-                case 'txt':
-                  setOutput('<object data="' + sanitizedInput.split(' ')[1] + '" type="text/plain" width="100%" height="100%"></object>')
-                  break;
-                case 'json':
-                  setOutput('<object data="' + sanitizedInput.split(' ')[1] + '" type="application/json" width="100%" height="100%"></object>')
-                  break;
-                case 'xml':
-                  setOutput('<p>open: ' + sanitizedInput.split(' ')[1] + ': Unsuported file format<br />source - https://nygosaki.dev/' + sanitizedInput.split(' ')[1] + '</p>');
-                  break;
-                case 'jpeg':
-                  setOutput('<img src="' + sanitizedInput.split(' ')[1] + '" class="largeImage"/>');
-                break;
-                case 'jpg':
-                  setOutput('<img src="' + sanitizedInput.split(' ')[1] + '" class="largeImage"/>');
-                break;
-                case 'ico':
-                  setOutput('<img src="' + sanitizedInput.split(' ')[1] + '" class="largeImage"/>');
-                break;
-                case 'png':
-                  setOutput('<img src="' + sanitizedInput.split(' ')[1] + '" class="largeImage"/>');
-                break;
-                case 'gif':
-                  setOutput('<img src="' + sanitizedInput.split(' ')[1] + '" class="largeImage"/>');
-                break;
-                default:
-                  setOutput('<p>open: ' + sanitizedInput.split(' ')[1] + ': Unsuported file format or No such file or directory</p>');
-                    break;
-            }
+              const startPathOpen = path;
+              const pathPartsOpen = startPathOpen.split('/');
+              let currentPathOpen = paths;
+              for (let part of pathPartsOpen) {
+                if (part === '') continue;
+                const found = currentPathOpen.find(item => item.name === part && item.type === 'dir');
+                if (found) {
+                currentPathOpen = found.items;
+                }
+              }
+              const file = sanitizedInput.split(' ')[1];
+              const foundFile = currentPathOpen.find(item => item.name === file && item.type !== 'dir');
+              if (foundFile) {
+                setOutput(foundFile.items);
+              } else {
+                setOutput('<p>open: no such file ' + sanitizedInput.split(' ')[1] + '</p>');
+              }
               break;
+        case 'cd':
+          if (sanitizedInput.split(' ')[1] === '..') {
+            setPath(path.split('/').slice(0, -1).join('/'));
+          } else if (sanitizedInput.split(' ')[1] === '~') {
+            setPath('~')
+          } else {
+            const startPath = path;
+            const startPathParts = startPath.split('/');
+            let currentPath = paths;
+            const newPathParts = sanitizedInput.split(' ')[1].split('/');
+            const pathParts = startPathParts.concat(newPathParts);
+            for (let part of pathParts) {
+              if (part === '') continue;
+              if (part === '~') currentPath = paths;
+              const found = currentPath.find(item => item.name === part && item.type === 'dir');
+              if (found) {
+              currentPath = found.items;
+              let newPath = pathParts.slice(pathParts.lastIndexOf('~') + 1).join('/');
+              newPath = '~/' + newPath;
+              setPath(newPath);
+              } else {
+              setOutput('<p>cd: no such file or directory: ' + sanitizedInput.split(' ')[1] + '</p>');
+              setPath(startPath);
+              break;
+              }
+            }
+            break;
+          }
+          
+          break;
         default:
               setOutput('<p>shell: command not found: ' + sanitizedInput + '</p><p>Please try running the `help` command</p>');
       }
-      const eventSpawnTerminalLine = new Event('spawnTerminalLine');
-      document.dispatchEvent(eventSpawnTerminalLine);
+      setTimeout(() => {
+        const eventSpawnTerminalLine = new Event('spawnTerminalLine');
+        document.dispatchEvent(eventSpawnTerminalLine);
+      }, 50)
   };
 
     return (
         <div class="terminal">
-            <label for="commandinput" style={{color:'#9b87f5'}}>{user}@Server2 ~</label>
+            <label for="commandinput" style={{color:'#9b87f5'}}>{user}@Server2 {pathStat.current}</label>
             <input
                 type="text"
                 aria-label="Command Input"
