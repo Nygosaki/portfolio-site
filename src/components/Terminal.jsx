@@ -21,7 +21,57 @@ function Terminal({ searchParams, path, setPath }) {
           name: 'projects',
           type: 'dir',
           hidden: false,
-          items: []
+          items: [{
+            name: 'SoT-FishAssistant.md',
+            type: 'markdown',
+            hidden: false,
+            items: '<p><span style="font-style: italic; text-decoration: underline; font-size: larger;">SoT-FishAssistant</span><br />Status: <span style="color: red">Taken Down</span>;<br />Description: A Sea of Thieves external cheat including primarily assisting features, such as ESP of all actors, grouping of objects, emmisery detection, x-marks the spot esp, cannon trajectory prediction, and a lot more.<br />Before being taken down it had over 300 stars on github.<br />Project Files: <a class="githubLink" href="https://github.com/Nygosaki/SoT-FishAssistant">github/Nygosaki/SoT-FishAssistant</a></p>'
+          }, {
+            name: 'Legit-AimBooster-Aimbot.md',
+            type: 'markdown',
+            hidden: false,
+            items: '<p><span style="font-style: italic; text-decoration: underline; font-size: larger;">Legit-AimBooster-Aimbot</span><br />Status: <span style="color: orange">Archived</span>;<br />Description: A fun side project experimenting with different ways of smoothing mouse movements to find accurate, fast, but human mouse movement smoothing.<br />It was built to get high scores on the now-defunct AimBooster aim trainer website.<br />Project Files: <a class="githubLink" href="https://github.com/Nygosaki/Legit-AimBooster-Aimbot">github/Nygosaki/Legit-AimBooster-Aimbot</a></p>'
+          }, {
+            name: 'TwitchBottingTools.md',
+            type: 'markdown',
+            hidden: false,
+            items: '<p><span style="font-style: italic; text-decoration: underline; font-size: larger;">TwitchBottingTools</span><br />Status: <span style="color: orange">Archived</span>;<br />Description: A fun side project using Windows Power Automate which bots Twitch streams.<br />It would automatically create accounts if there arent enough, evade IP detection through VPNs, bypass captchas (without captcha solver services), and finally watch the actual stream on many accounts at once. <br />Project Files: <a class="githubLink" href="https://github.com/Nygosaki/TwitchBottingTools">github/Nygosaki/TwitchBottingTools</a></p>'
+          }, {
+            name: 'Snapchat-AutoSnap.md',
+            type: 'markdown',
+            hidden: false,
+            items: '<p><span style="font-style: italic; text-decoration: underline; font-size: larger;">Snapchat-AutoSnap</span><br />Status: <span style="color: red">Privated Due to Harassment</span>;<br />Description: A Power Automate script for web.snapchat.com to continuously send snaps to friends with the "New Friend" badge.<br />Can be used to spam send snaps to Snapchat bots if you accept their friend requests and farm snap points at the same time. <br />Before being privated, it had over 70 stars.<br />Project Files: <a class="githubLink" href="https://github.com/Nygosaki/Snapchat-AutoSnap">github/Nygosaki/Snapchat-AutoSnap</a></p>'
+          }, {
+            name: 'Gov-DMARC-Checker.md',
+            type: 'markdown',
+            hidden: false,
+            items: '<p><span style="font-style: italic; text-decoration: underline; font-size: larger;">Gov-DMARC-Checker</span><br />Status: <span style="color: greenyellow">Active Unmaintained</span>;<br />Description: An automated list for gathering all US Government email adresses and finding which ones have vulnerable DMARC records.<br />Implements various techniques such as parallel processing to speed up the process.<br />Fun fact: Most domains have vulnerable records, including but not limited to the justice department, CIA, sherrifs offices, and more! <br />Project Files: <a class="githubLink" href="https://github.com/Nygosaki/Gov-DMARC-Checker">github/Nygosaki/Gov-DMARC-Checker</a></p>'
+          }, {
+            name: 'SpigotBackdoor.md',
+            type: 'markdown',
+            hidden: false,
+            items: '<p><span style="font-style: italic; text-decoration: underline; font-size: larger;">SpigotBackdoor</span><br />Status: <span style="color: orange">Archived</span>;<br />Description: A custom made Spigot backdoor with auto-updating, silent server command execution, server console logging to webhook, SSH, and more.<br />The legit side is a capture-the-flag type of system.  <br />Project Files: <a class="githubLink" href="https://github.com/Nygosaki/SpigotBackdoor">github/Nygosaki/SpigotBackdoor</a></p>'
+          }, {
+            name: 'AI-Writing-Detection.md',
+            type: 'markdown',
+            hidden: false,
+            items: '<p><span style="font-style: italic; text-decoration: underline; font-size: larger;">AI-Writing-Detection</span><br />Status: <span style="color: greenyellow">Active Semi-Maintained</span>;<br />Description: This tool will parse the inputted text into many different existing AI writing detection tools and return the results to you. This is to be able to scan text with as many tools as possible without having to do it manually. <br />Project Files: <a class="githubLink" href="https://github.com/Nygosaki/AI-Writing-Detection">github/Nygosaki/AI-Writing-Detection</a></p>'
+          }, {
+            name: 'portfolio-site.md',
+            type: 'markdown',
+            hidden: false,
+            items: '<p><span style="font-style: italic; text-decoration: underline; font-size: larger;">portfolio-site</span><br />Status: <span style="color: green">Active Maintained</span>;<br />Description: This website! <br />Project Files: <a class="githubLink" href="https://github.com/Nygosaki/portfolio-site">github/Nygosaki/portfolio-site</a></p>'
+          }, {
+            name: 'simple-backdoor.md',
+            type: 'markdown',
+            hidden: false,
+            items: '<p><span style="font-style: italic; text-decoration: underline; font-size: larger;">simple-backdoor</span><br />Status: <span style="color: greenyellow">Private Active Unmaintained</span>;<br />Description: A C++ Windows backdoor/RAT that is undetected on virus total and avoids end point protection as well as real-time behavioural detection.<br />Project Files: <a class="githubLink" href="https://github.com/Nygosaki/simple-backdoor">github/Nygosaki/simple-backdoor</a></p>'
+        }, {
+          name: 'machine-learning-unhashing.md',
+          type: 'markdown',
+          hidden: false,
+          items: '<p><span style="font-style: italic; text-decoration: underline; font-size: larger;">machine-learning-unhashing</span><br />Status: <span style="color: green">Private In-Development</span>;<br />Description: A research project for using machine learning to find at which stage of the SHA256 hashing algorythm patterns fully dissapear.<br />Project Files: <a class="githubLink" href="https://github.com/Nygosaki/machine-learning-unhashing">github/Nygosaki/machine-learning-unhashing</a></p>'
+      }]
         },{
           name: 'commissions.md',
           type: 'markdown',
@@ -33,7 +83,27 @@ function Terminal({ searchParams, path, setPath }) {
         name: 'othercoolstuff',
         type: 'dir',
         hidden: false,
-        items: []
+        items: [{
+          name: 'anthony.jpg',
+          type: 'image',
+          hidden: false,
+          items: '<img src="anthony.jpg" class="largeImage"/>'
+        }, {
+          name: 'coupleArt.jpg',
+          type: 'image',
+          hidden: false,
+          items: '<img src="coupleArt.jpg" class="largeImage"/>'
+        }, {
+          name: 'coupleArt2.jpg',
+          type: 'image',
+          hidden: false,
+          items: '<img src="coupleArt2.jpg" class="largeImage"/>'
+        }, {
+          name: 'coupleArt3.png',
+          type: 'image',
+          hidden: false,
+          items: '<img src="coupleArt3.png" class="largeImage"/>'
+        }]
       },
       {
         name: 'importantstuff',
@@ -59,13 +129,7 @@ function Terminal({ searchParams, path, setPath }) {
         type: 'markdown',
         hidden: false,
         items: '<p>I would also further like to thank the following people:<br />   - Jack Rugile for creating the Canvas Parallax Skyline for sketch.js which I adapted to work with vanilla js canvases.'},
-      ]},
-      {
-        name: 'randomstuff',
-        type: 'dir',
-        hidden: true,
-        items: []
-      }]
+      ]}]
     }]
     
     const [user, setUser] = useState(searchParams.get("user").replace(/[&<>"'`/$=\\]/g, function(s) {
