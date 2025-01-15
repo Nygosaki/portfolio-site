@@ -121,7 +121,7 @@ function Terminal({ searchParams, path, setPath }) {
         hidden: false,
         items: `            <div class="horizontalAlign">
               <img src="ashley.jpeg" class='credits'/>
-              <p>Thanks to:<br />My beautiful girlfriend, <a href=https://github.com/Ash-does-stuff>Ash-does-stuff</a><br />For helping with some css,<br />teaching me a lot of JS,<br />and coming up with good suggestions :></p>
+              <p>Thanks to:<br /><a href=https://github.com/Ash-does-stuff>Ash-does-stuff</a><br />For helping with some css,<br />teaching me a lot of JS,<br />and coming up with good suggestions :></p>
             </div>`
       }, 
       {
