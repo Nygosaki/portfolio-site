@@ -48,6 +48,17 @@
     }
   }
 
+  @keyframes reveal-input {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
   input::placeholder {
     color: lightgray;
 }
@@ -109,4 +120,103 @@ a:active {
   top: 0;
   left: 0;
   z-index: -10;
+}
+
+
+
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: rgba(138, 138, 138, 0.18);
+  padding: 0.5em;
+  border-radius: 0.5em;
+  width: 15em;
+  margin-bottom: 0.5em;
+  backdrop-filter: blur(7px);
+  cursor: pointer;
+}
+
+.user-card-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+}
+
+.user-input {
+  margin-top: 0em;
+  margin-left: 3.5em;
+  background-color: rgb(26, 31, 44);
+  width: 10em;
+  border-radius: 0.5em;
+}
+.user-card.expanded {
+  animation: expand-card 0.5s ease-in-out forwards;
+  flex-direction: column;
+  align-items: flex-start;
+  cursor: default;
+}
+
+.user-card.expanded .user-input {
+  animation: reveal-input 0.5s ease-in-out forwards;
+  display: block;
+}
+
+@keyframes expand-card {
+  from {
+    height: 2.5em;
+  }
+  to {
+    height: 4em;
+  }
+}
+
+.user-card:hover {
+  background-color: rgba(134, 102, 147, 0.3);
+}
+
+.user-avatar {
+  width: 2.25em;
+  border-radius: 50%;
+  border: 1px solid white;
+}
+
+.user-name {
+  padding-left: 0.7em;
+  font-size: 1em;
+  margin: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+.not-listed {
+  font-size: 0.75em;
+  color: #D3C6DF; /* Light gray for secondary text */
+  cursor: pointer;
+  align-self: flex-start; /* Align to the left side of the div */
+  margin: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+.not-listed:hover {
+  text-decoration: underline;
+}
+
+.submit-button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin-left: 0.7em;
+  color: #e5deff;
+  cursor: pointer;
 }

@@ -18,8 +18,27 @@ function LoginForm() {
 
   const [showButton, setShowButton] = useState(false);
   const handlePasswordInput = () => {
-    if (emailInputRef.current.value.trim() !== "") {
+    if (passwordInputRef.current.value.trim() !== "") {
       setShowButton(true);
+    }
+  };
+
+  const [showLoginForm, setShowLoginForm] = useState(false);
+
+  const handleUserCardClick = (event) => {
+    if (event.target.tagName.toLowerCase() === 'input') {
+      return;
+    } else if (event.target.tagName.toLowerCase() === 'button') {
+      return;
+    }
+    if (showLoginForm) {
+      setShowLoginForm(false);
+      const userCard = document.querySelector('.user-card');
+      userCard.classList.remove('expanded');
+    } else {
+      setShowLoginForm(true);
+      const userCard = document.querySelector('.user-card');
+      userCard.classList.add('expanded');
     }
   };
 
@@ -35,10 +54,8 @@ function LoginForm() {
     }
   };
 
-  const submitHandler = (event) => {
-    event.preventDefault();
-  
-    const username = emailInputRef.current.value.replace(/[&<>"'`/$=\\]/g, function(s) {
+  const submitHandler = (usernameRaw, passwordRaw) => {
+    const username = usernameRaw.replace(/[&<>"'`/$=\\]/g, function(s) {
       return {
           '&': '',
           '<': '',
@@ -52,7 +69,7 @@ function LoginForm() {
           '\\': ''
       }[s];
   });
-    const password = passwordInputRef.current.value.replace(/[&<>"'`/$=\\]/g, function(s) {
+    const password = passwordRaw.replace(/[&<>"'`/$=\\]/g, function(s) {
       return {
           '&': '',
           '<': '',
@@ -66,6 +83,16 @@ function LoginForm() {
           '\\': ''
       }[s];
   });
+    if (username.trim() === "" || password.trim() === "") {
+      return;
+    } else if (username.toLowerCase() === "nygosaki" && password !== "IAmGay") {
+      const userCard = document.querySelector('.user-card');
+      userCard.classList.add('shake');
+      setTimeout(() => {
+        userCard.classList.remove('shake');
+      }, 500);
+      return;
+    }
 
     console.log("Login attempt: ")
     viewNavigate('/terminal?user=' + username + '&pass=' + password);
@@ -98,66 +125,71 @@ function LoginForm() {
   useEffect(() => {
       setTimeout(() => {
       emailInputRef.current.focus();
-    }, 7000);
+    }, 8000);
     }, []);
   
+  useEffect(() => {
+    const handleEnterPress = (event) => {
+      if (event.key === 'Enter' && showButton) {
+        document.querySelector('.submit-button').click();
+      }
+    };
+
+    document.addEventListener('keydown', handleEnterPress);
+
+    return () => {
+      document.removeEventListener('keydown', handleEnterPress);
+    };
+  }, [showButton]);
+
   return (
-        <div>
-          <div className={classes.blurContainer}></div>
-          <div className={classes.imageContainer}>
-            <div className={classes.pfpAnimation}>
-              <div className={classes.pfpColorAnimation}>
-                <div className={classes.pfpAnimationContainer}>
-                <div className={classes.circle}></div>
-                  <img src={pfp} style={{width: "8vw", minWidth: "70px", position: "relative", zIndex: "1"}} alt=''>
-                  </img>
-                </div>
-              </div>
+    <div>
+      <div className={classes.imageContainer}>
+        <div className={classes.pfpAnimation}>
+          <div className={classes.pfpColorAnimation}>
+            <div className={classes.pfpAnimationContainer}>
+              <div className={classes.circle}></div>
+              <img src={pfp} style={{ width: "8vw", minWidth: "70px", position: "relative", zIndex: "1" }} alt=''>
+              </img>
             </div>
           </div>
-    <form onSubmit={submitHandler} class={classes.form}>
-    <div class={classes.flexContainer}>
-      <div>
-    <div className={`${classes.centeredContent} ${showPassword ? classes.faded : classes.blinkingText}`} id="user">
-      <p class={classes.loginTxt}>{'>'}</p>
-        <input
-              type="text"
-              id="user-name"
-              name="user-name"
-              autoComplete="off"
-              placeholder="__"
-              ref={emailInputRef}
-              required={true}
-              onInput={handleUserNameInput}
-              ></input>
-        </div>
-      <div className={`${showPassword ? classes.slideBottom : classes.hidden}`} id="pass">
-        <div className={`${classes.centeredContent} ${showButton ? classes.faded : classes.blinkingText}`}>
-        <p class={classes.loginTxt}>{'>'} </p>
-        <input
-              type="password"
-              id="user-password"
-              name="user-password"
-              autoComplete="off"
-              placeholder="__"
-              ref={passwordInputRef}
-              required={true}
-              onInput={handlePasswordInput}
-              ></input>
         </div>
       </div>
+      <div className="login-container">
+        <div className="user-card" onClick={handleUserCardClick}>
+          <div className="user-card-header">
+            <img
+              src={pfp}
+              alt="User Avatar"
+              className="user-avatar"
+            />
+            <p className="user-name">Nygosaki</p>
+          </div>
+          {showLoginForm && (
+            <div style={{ display: "flex" }}>
+              <input
+                type="password"
+                placeholder="Password"
+                ref={passwordInputRef}
+                onInput={handlePasswordInput}
+                className="user-input"
+                id="password"
+                style={{ display: showLoginForm ? 'block' : 'none' }}
+              />
+              {showButton && (
+                <button onClick={() => {
+                  submitHandler("Nygosaki", passwordInputRef.current.value);
+                }} className="submit-button">-&gt;</button>
+              )}
+            </div>
+          )}
+        </div>
+        <p className="not-listed" onClick={() => submitHandler("guest", "guest")}>Use without logging in</p>
       </div>
-        <button
-        className={`${classes.loginBtn} ${showButton ? classes.slideRight : classes.hidden}`}
-        disabled={false}
-      >
-      <div className={`${showButton ? classes.blinkingText : ""}`}>{"->"}</div>
-      </button></div>
-    </form>
-    <p class={classes.hintText}>Hint: You can use guest credentials :3</p>
-    <div class={classes.legal}>
-      <p onClick={legalHandler}><a href="#!">Legal</a></p>
-    </div>
+      <p className={classes.hintText}>Hint: You don't have to sign up, don't worry :3</p>
+      <div className={classes.legal}>
+        <p onClick={legalHandler}><a href="#!">Legal</a></p>
+      </div>
     </div>
   );
 }

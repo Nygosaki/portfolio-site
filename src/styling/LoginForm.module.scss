@@ -114,16 +114,6 @@ input {
   padding-right: 1vw;
 }
 
-.blurContainer {
-  content: '';
-  position: absolute;
-  width: 18.5vw;
-  height: 20vh;
-  background: #1A1F2C; /* Optional: Add a semi-transparent background */
-  filter: blur(2vw); /* Increased the blur radius */
-  pointer-events: none; /* Ensure the blur effect doesn't interfere with user interactions */
-}
-
 
 .imageContainer {
   position: relative;
@@ -208,14 +198,17 @@ input {
 }
 
 .pfpAnimationContainer::before {
+  padding-bottom: 2em;
   content: '';
+  background: #1A1F2C;
+  filter: blur(20px);
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: #1A1F2C; /* Optional: Add a semi-transparent background */
-  filter: blur(1vw); /* Increased the blur radius */
+  // background: #1A1F2C; /* Optional: Add a semi-transparent background */
+  // filter: blur(1vw); /* Increased the blur radius */
   pointer-events: none; /* Ensure the blur effect doesn't interfere with user interactions */
 }
 
@@ -259,6 +252,7 @@ input {
   100% {
     -webkit-transform: translateY(0) scale(1);
             transform: translateY(0) scale(1);
+            opacity: 0;
   }
 }
 
