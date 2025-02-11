@@ -1,13 +1,23 @@
-import React, { useRef, useState, useReducer } from 'react';
+import React, { useRef, useState, useReducer, useCallback, useEffect } from 'react';
 import { useTerminalContext } from '@src/components/TerminalContext';
 import { type } from '@testing-library/user-event/dist/cjs/utility/type.js';
 
+
 function Terminal({ searchParams, path, setPath }) {
+
     const [input, setInput] = useState('');
     const [output, setOutput] = useState("");
     const [cursorVisible, setCursorVisible] = useState(true);
     const { history, setHistory, historyIndex, setHistoryIndex } = useTerminalContext();
     const pathStat = useRef(path);
+    const commands = [
+      "help",
+      "ls",
+      "open",
+      "cd",
+      "neofetch",
+      "blahaj"
+  ];
     var paths = [{
       name: '~',
       type: 'dir',
@@ -146,13 +156,56 @@ function Terminal({ searchParams, path, setPath }) {
           '\\': ''
       }[s];
   }));
+  
+  const handleTabCompletion = useCallback(
+    (event) => {
+    if (event.key === 'Tab') {
+      event.preventDefault();
+      if (input) {
+          if (input.includes(' ')) {
+            let inputParts = input.split(' ');
+            const startPath = path;
+            const startPathParts = startPath.split('/');
+            let currentPath = paths;
+            const newPathParts = inputParts[1].split('/');
+            const pathParts = startPathParts.concat(newPathParts);
+            const resPath = startPathParts;
+            for (let part of pathParts) {
+              if (part === '') continue;
+              if (part === '~') currentPath = paths;
+              const found = currentPath.find(item => item.name === part);
+              if (found) {
+                resPath.push(found.name);
+                currentPath = found.items;
+              } else if (part === pathParts[pathParts.length - 1]) {
+                const matches = currentPath.filter(item => item.name.startsWith(part));
+                if (matches.length === 1) {
+                  resPath.push(matches[0].name);
+                    setInput(inputParts[0] + " " + resPath.slice(resPath.lastIndexOf('~') + 1).join('/'));
+                }
+                }}
+            } else {
+              const matchingCommand = commands.find(command => command.startsWith(input));
+              if (matchingCommand) {
+                setInput(matchingCommand);
+              }
+          
+      }
+    }
+  }},
+  [input, setInput, path, paths]
+);
+useEffect(() => {
+  document.addEventListener('keydown', handleTabCompletion);
+  return () => document.removeEventListener("keydown", handleTabCompletion);
+}, [handleTabCompletion]);
 
   
     //TODO add file system, fancy logout, move comissions, credits, legal to directory
     const handleCommand = (inputCommand) => {
       setHistory([...history, inputCommand]);
       setHistoryIndex(history.length + 1);
-      console.log(history)
+      document.removeEventListener('keydown', handleTabCompletion);
       let sanitizedInput = inputCommand.replace(/[&<>"'`$=\\]/g, function(s) {
         return {
             '&': '',
@@ -465,7 +518,10 @@ function Terminal({ searchParams, path, setPath }) {
               }
               break;
         case 'cd':
-          if (sanitizedInput.split(' ')[1] === '..') {
+          if (sanitizedInput == "cd" || sanitizedInput == "cd ") {
+            setOutput('<p>cd: missing argument</p>');
+            break;
+          } else if (sanitizedInput.split(' ')[1] === '..') {
             setPath(path.split('/').slice(0, -1).join('/'));
           } else if (sanitizedInput.split(' ')[1] === '~') {
             setPath('~')
@@ -532,20 +588,16 @@ function Terminal({ searchParams, path, setPath }) {
                         inputNewest.disabled = true;
                         setCursorVisible(false);
                     } else if (e.key === 'ArrowUp') {
-                      console.log("Arrow Up")
                         // Make sure that the history index is within the bounds of the history list
                         if (historyIndex !== 0) {
-                          console.log("History Index within bounds")
                           setInput(history[historyIndex-1]);
                           setHistoryIndex(historyIndex - 1);
                         } else {
                           // The user is at the beginning of the history list
                         }
                       } else if (e.key === 'ArrowDown') {
-                        console.log("Arrow Down")
                         // Make sure that the history index is within the bounds of the history list
                         if (historyIndex !== history.length) {
-                          console.log("History Index within bounds")
                           setInput(history[historyIndex +1 ]);
                           setHistoryIndex(historyIndex + 1);
                         } else {

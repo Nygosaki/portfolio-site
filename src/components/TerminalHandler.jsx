@@ -16,6 +16,7 @@ function TerminalHandler() {
     const [terminals, setTerminals] = useState([]);
     const [lastTrackDetails, setLastTrackDetails] = useState(null);
     const [path, setPath] = useState('~');
+  
     // const location = useLocation();
     // const { history, setHistory, historyIndex, setHistoryIndex } = useTerminalContext();
 
