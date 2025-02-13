@@ -539,6 +539,9 @@ useEffect(() => {
               currentPath = found.items;
               let newPath = pathParts.slice(pathParts.lastIndexOf('~') + 1).join('/');
               newPath = '~/' + newPath;
+              if (newPath.includes('//')) {
+                newPath = newPath.replace(/\/{2,}/g, '/');
+              }
               setPath(newPath);
               } else {
               setOutput('<p>cd: no such file or directory: ' + sanitizedInput.split(' ')[1] + '</p>');
