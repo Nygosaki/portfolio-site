@@ -86,7 +86,7 @@ function Terminal({ searchParams, path, setPath }) {
           name: 'commissions.md',
           type: 'markdown',
           hidden: false,
-          items: "<p>If you want to comission some app (or most likely botting tools), my rates are $10 per hour of work. <a href=https://discord.gg/sFzqJk9R7E>Contact me on Discord</a> for further details.</p>"
+          items: "<p>My commissions are indefinitely closed except for special circumstances.</p>"
         }]
       },
       {
@@ -181,7 +181,8 @@ function Terminal({ searchParams, path, setPath }) {
                 const matches = currentPath.filter(item => item.name.startsWith(part));
                 if (matches.length === 1) {
                   resPath.push(matches[0].name);
-                    setInput(inputParts[0] + " " + resPath.slice(resPath.lastIndexOf('~') + 1).join('/'));
+                  console.log(path.split('/')[path.split('/').length - 1]);
+                    setInput(inputParts[0] + " " + resPath.slice(resPath.lastIndexOf(path.split('/')[path.split('/').length - 1]) + 1).join('/'));
                 }
                 }}
             } else {
