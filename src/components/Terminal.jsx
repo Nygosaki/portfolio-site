@@ -80,7 +80,7 @@ function Terminal({ searchParams, path, setPath }) {
           name: 'machine-learning-unhashing.md',
           type: 'markdown',
           hidden: false,
-          items: '<p><span style="font-style: italic; text-decoration: underline; font-size: larger;">machine-learning-unhashing</span><br />Status: <span style="color: green">Private In-Development</span>;<br />Description: A research project for using machine learning to find at which stage of the SHA256 hashing algorythm patterns fully dissapear.<br />Project Files: <a class="githubLink" href="https://github.com/Nygosaki/machine-learning-unhashing">github/Nygosaki/machine-learning-unhashing</a></p>'
+          items: '<p><span style="font-style: italic; text-decoration: underline; font-size: larger;">machine-learning-unhashing</span><br />Status: <span style="color: green">Private In-Development</span>;<br />Description: A research project for using machine learning to find at which stage of the SHA256 hashing algorithm patterns fully dissapear.<br />Project Files: <a class="githubLink" href="https://github.com/Nygosaki/machine-learning-unhashing">github/Nygosaki/machine-learning-unhashing</a></p>'
       }]
         },{
           name: 'commissions.md',
