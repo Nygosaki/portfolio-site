@@ -37,6 +37,11 @@ function Terminal({ searchParams, path, setPath }) {
             hidden: false,
             items: '<p><span style="font-style: italic; text-decoration: underline; font-size: larger;">SoT-FishAssistant</span><br />Status: <span style="color: red">Taken Down</span>;<br />Description: A Sea of Thieves external cheat including primarily assisting features, such as ESP of all actors, grouping of objects, emmisery detection, x-marks the spot esp, cannon trajectory prediction, and a lot more.<br />Before being taken down it had over 300 stars on github.<br />Project Files: <a class="githubLink" href="https://github.com/Nygosaki/SoT-FishAssistant">github/Nygosaki/SoT-FishAssistant</a></p>'
           }, {
+            name: 'Concert-Notifier.md',
+            type: 'markdown',
+            hidden: false,
+            items: '<p><span style="font-style: italic; text-decoration: underline; font-size: larger;">Concert-Notifier</span><br />Status: <span style="color: green">Active</span>;<br />Description: A python program which scans for concerts of your listened-to artists in your chosen countries.<br />It can pull the artist list from your last.fm library and send a HTML formatted email with the relevant information.<br />Project Files: <a class="githubLink" href="https://github.com/Nygosaki/concert-notifier">github/Nygosaki/concert-notifier</a></p>'
+          },{
             name: 'Legit-AimBooster-Aimbot.md',
             type: 'markdown',
             hidden: false,
