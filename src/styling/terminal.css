@@ -133,7 +133,7 @@ body {
 .githubLink::before {
   content: ' ';
   margin-right: 0.3em;
-  background-image: url('src/assets/icoGithub.png');
+  background-image: url('@assets/icoGithub.png');
   background-size: 1.2em 1.2em;
   width: 1.2em;
   height: 1.2em;

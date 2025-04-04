@@ -113,8 +113,8 @@ function TerminalHandler() {
           My name's <strong>Nygosaki</strong> <span class="descriptor">(Any pronouns)</span><br />
           I am a programmer, also interested in<br />
           general IT, cybersecurity and pentesting.<br />
-          Currently focusing on bots and other 'malicious' programs.<br />
-          Commissions are open btw :3<br />
+          Currently focusing on bots and other 'malicious' programs,<br />
+          as well as just whatever I feel like I need :3<br />
           </p>
           </div>
           <div style={{flexDirection: "column"}}>

@@ -2,6 +2,8 @@ import React, { useRef, useState, useReducer, useCallback, useEffect } from 'rea
 import { useTerminalContext } from '@src/components/TerminalContext';
 import { type } from '@testing-library/user-event/dist/cjs/utility/type.js';
 
+import icoAshley from '@assets/ashley.jpeg';
+import imgShark from '@assets/saveTheShorks.jpeg';
 
 function Terminal({ searchParams, path, setPath }) {
 
@@ -99,25 +101,10 @@ function Terminal({ searchParams, path, setPath }) {
         type: 'dir',
         hidden: false,
         items: [{
-          name: 'anthony.jpg',
+          name: 'saveTheShorks.jpeg',
           type: 'image',
           hidden: false,
-          items: '<img src="anthony.jpg" class="largeImage"/>'
-        }, {
-          name: 'coupleArt.jpg',
-          type: 'image',
-          hidden: false,
-          items: '<img src="coupleArt.jpg" class="largeImage"/>'
-        }, {
-          name: 'coupleArt2.jpg',
-          type: 'image',
-          hidden: false,
-          items: '<img src="coupleArt2.jpg" class="largeImage"/>'
-        }, {
-          name: 'coupleArt3.png',
-          type: 'image',
-          hidden: false,
-          items: '<img src="coupleArt3.png" class="largeImage"/>'
+          items: `<img src="${imgShark}" class="largeImage"/>`
         }]
       },
       {
@@ -135,7 +122,7 @@ function Terminal({ searchParams, path, setPath }) {
         type: 'markdown',
         hidden: false,
         items: `            <div class="horizontalAlign">
-              <img src="ashley.jpeg" class='credits'/>
+              <img src="${icoAshley}" class='credits'/>
               <p>Thanks to:<br /><a href=https://github.com/Ash-does-stuff>Ash-does-stuff</a><br />For helping with some css,<br />teaching me a lot of JS,<br />and coming up with good suggestions :></p>
             </div>`
       }, 
